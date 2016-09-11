@@ -1,1 +1,5 @@
 //记事本
+// github设置添加SSH
+http://www.cnblogs.com/ayseeing/p/3572582.html
+//生成多个git ssh密钥
+http://www.cnblogs.com/ayseeing/p/4445194.html
