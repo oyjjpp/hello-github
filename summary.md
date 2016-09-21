@@ -1,15 +1,11 @@
-//记事本
-// github设置添加SSH
-http://www.cnblogs.com/ayseeing/p/3572582.html
+##记事本
+[github设置添加SSH](http://www.cnblogs.com/ayseeing/p/3572582.html)
 
-//生成多个git ssh密钥
-http://www.cnblogs.com/ayseeing/p/4445194.html
+[生成多个git ssh密钥](http://www.cnblogs.com/ayseeing/p/4445194.html)
 
-//PHP在线操作手册                 
-http://php.net/
+[PHP在线操作手册](http://php.net/)
 
-//php内核                         
-http://www.nowamagic.net/librarys/veda/detail/1285
+[php内核](http://www.nowamagic.net/librarys/veda/detail/1285)
 
 //php内核简介                     
 http://www.php-internals.com/
