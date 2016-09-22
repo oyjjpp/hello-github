@@ -1,89 +1,62 @@
 ##记事本
-[github设置添加SSH](http://www.cnblogs.com/ayseeing/p/3572582.html)
+###git相关资料
+*[github设置添加SSH](http://www.cnblogs.com/ayseeing/p/3572582.html)
 
-[生成多个git ssh密钥](http://www.cnblogs.com/ayseeing/p/4445194.html)
+*[生成多个git ssh密钥](http://www.cnblogs.com/ayseeing/p/4445194.html)
 
-[PHP在线操作手册](http://php.net/)
+###php相关资料
+*[PHP在线操作手册](http://php.net/)
 
-[php内核](http://www.nowamagic.net/librarys/veda/detail/1285)
+*[php内核](http://www.nowamagic.net/librarys/veda/detail/1285)
 
-//php内核简介                     
-http://www.php-internals.com/
+*[php内核简介](http://www.php-internals.com/)
 
-//php设计模式                     
-http://www.lai18.com/cate/110.html
+*[php设计模式](http://www.lai18.com/cate/110.html)
 
-//php分词过滤						
-http://blog.41ms.com/post/41.html
+*[php分词过滤](http://blog.41ms.com/post/41.html)			
 
-//linux命令参考                   
-http://man.linuxde.net/
+*[公众平台开发文档](http://mp.weixin.qq.com/wiki/18/28fc21e7ed87bec960651f0ce873ef8a.html)
 
-//linux在线教程                   
-http://c.biancheng.net/cpp/html/2726.html
+*[微信企业号开发文档](http://qydev.weixin.qq.com/wiki/index.php?title=%E9%A6%96%E9%A1%B5)
 
-//awk语言简洁						
-http://awk.readthedocs.org/en/latest/chapter-one.html
+*[discuzt](http://discuzt.cr180.com/)
 
-//mysql官方文档				    
-http://dev.mysql.com/
+*[phpcms2008开发文档](http://www.phpcms.cn/doc/PHPCMSDocumentor/function_chinese.html)	
 
-//初学者                          
-http://www.phplearn.cn/
+*[企业微信号开发文档](http://qydev.weixin.qq.com/wiki/index.php?title=%E9%A6%96%E9%A1%B5)		
 
-//乔布简历						
-http://cv.qiaobutang.com
+###Linux相关资料
+*[linux命令参考](http://man.linuxde.net/)
 
-//在线视频教程					
-http://v.dxsbb.com
+*[linux在线教程](http://c.biancheng.net/cpp/html/2726.html)                   
 
-//W3school 						
-http://www.w3school.com.cn
+*[awk语言简洁](http://awk.readthedocs.org/en/latest/chapter-one.html)						
 
-//素材网站						
-http://www.17sucai.com/    
+###数据库相关资料
+*[mysql官方文档](http://dev.mysql.com/)				    
 
-//C#防盗链技术					
-http://ihatenow.blog.163.com/blog/static/1449574720104315559236/       
+###go语言相关资料
+[go语言学习视频](http://www.ucai.cn/course/show/69)
 
-//断点续传						
-http://www.cnblogs.com/uu102/archive/2012/10/12/2720572.html  
+###前端相关技术
+*[my97日历控件开发文档](http://www.my97.net/dp/demo/resource/main.asp)
 
-//建立wifi  						
-http://jingyan.baidu.com/article/09ea3ededacfb7c0aede3929.html                  
+*[Bootstrap](http://v3.bootcss.com/)
 
-//学校							
-http://cms.ic.cust.edu.cn/cms/login.do   
+[初学者]http://www.phplearn.cn/                          
 
-//企业微信号开发文档              
-http://qydev.weixin.qq.com/wiki/index.php?title=%E9%A6%96%E9%A1%B5
+[乔布简历](http://cv.qiaobutang.com)						
 
-//my97日历控件开发文档            
-http://www.my97.net/dp/demo/resource/main.asp
+[在线视频教程](http://v.dxsbb.com)
 
-//Bootstrap                       
-http://v3.bootcss.com/
+[W3school](http://www.w3school.com.cn)
 
-//公众平台开发文档                
-http://mp.weixin.qq.com/wiki/18/28fc21e7ed87bec960651f0ce873ef8a.html
+[素材网站](http://www.17sucai.com/)    
 
-//微信企业号开发文档              
-http://qydev.weixin.qq.com/wiki/index.php?title=%E9%A6%96%E9%A1%B5
+[C#防盗链技术](http://ihatenow.blog.163.com/blog/static/1449574720104315559236/)
+       
+[断点续传](http://www.cnblogs.com/uu102/archive/2012/10/12/2720572.html)  
 
-//discuzt                         
-http://discuzt.cr180.com/
+[建立wifi](http://jingyan.baidu.com/article/09ea3ededacfb7c0aede3929.html)                     
 
-//phpcms2008开发文档              
-http://www.phpcms.cn/doc/PHPCMSDocumentor/function_chinese.html
-
-//bootstrap                       
-http://v3.bootcss.com/ 
-
-//王宇鹏                          
-http://blog.41ms.com/
-
-//go语言学习视频					
-http://www.ucai.cn/course/show/69
-
-//微软提供的offic online实现offic文档在线查看：
-http://www.cnblogs.com/huangtailang/p/76492af9d30087d8659d8d5400d20fc7.html
+[微软提供的offic online实现offic文档在线查看](http://www.cnblogs.com/huangtailang/p/76492af9d30087d8659d8d5400d20fc7.html)
