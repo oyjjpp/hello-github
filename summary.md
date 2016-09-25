@@ -43,7 +43,7 @@
 
 *[Bootstrap](http://v3.bootcss.com/)
 
-[初学者]http://www.phplearn.cn/                          
+[初学者](http://www.phplearn.cn/)                          
 
 [乔布简历](http://cv.qiaobutang.com)						
 
@@ -60,3 +60,4 @@
 [建立wifi](http://jingyan.baidu.com/article/09ea3ededacfb7c0aede3929.html)                     
 
 [微软提供的offic online实现offic文档在线查看](http://www.cnblogs.com/huangtailang/p/76492af9d30087d8659d8d5400d20fc7.html)
+https://github.com/younghz/Markdown
