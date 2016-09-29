@@ -49,6 +49,8 @@
 [golang学习](http://yougg.github.io/static/gonote/GolangStudy.html)
 
 ###前端相关技术
+[前端异常代码监控](http://rapheal.sinaapp.com/2014/11/06/javascript-error-monitor/#more-871)
+
 [my97日历控件开发文档](http://www.my97.net/dp/demo/resource/main.asp)
 
 [Bootstrap](http://v3.bootcss.com/)
