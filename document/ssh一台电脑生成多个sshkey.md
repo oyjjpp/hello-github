@@ -12,8 +12,33 @@ ssh-keygen -t rsa -C "your@emailcompany" -f ~/.ssh/id_rsa
 
 ssh-keygen -t rsa -C "your@emailpersonal" -f ~/.ssh/id_rsa_github
 
+![](../images/ssh生成多个ssh_key_file.png)
 
-##3、在.ssh目录下添加config文件
+##3、git（github、gitlab等）服务器设置SSH Key
+
+![](../images/ssh生成多个ssh_key_github_add.png)
+
+
+##4、设置私钥代理
+
+ssh-add ~/.ssh/id_rsa_github
+
+显示私钥列表
+
+$ ssh-add -l   
+
+清空私钥列表
+
+$ ssh-add -D  
+
+###注意
+
+如果执行ssh-add时提示”Could not open a connection to your authentication agent”，可以先执行以下命令
+
+ssh-agent bash
+
+
+##5、在.ssh目录下添加config文件
 
 company
 
@@ -35,14 +60,15 @@ User ouyangjun
 
 IdentityFile ~/.ssh/id_rsa_github
 
+![](../images/ssh生成多个ssh_key_config.png)
 
-
-##4、测试
+##6、测试
 
 ssh -T git@github.com
 
 
-参考：
+##参考：
+
 [http://blog.csdn.net/czhpxl007/article/details/50466087](http://blog.csdn.net/czhpxl007/article/details/50466087)
 
 [http://blog.itpub.net/25851087/viewspace-1262468/](http://blog.itpub.net/25851087/viewspace-1262468/)
