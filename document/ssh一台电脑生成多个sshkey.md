@@ -16,7 +16,7 @@ ssh-keygen -t rsa -C "your@emailpersonal" -f ~/.ssh/id_rsa_github
 
 ##3、git（github、gitlab等）服务器设置SSH Key
 
-![](../images/ssh生成多个ssh_key_github_add.png)
+![](../image/ssh生成多个ssh_key_github_add.png)
 
 
 ##4、设置私钥代理
@@ -60,7 +60,7 @@ User ouyangjun
 
 IdentityFile ~/.ssh/id_rsa_github
 
-![](../images/ssh生成多个ssh_key_config.png)
+![](../image/ssh生成多个ssh_key_config.png)
 
 ##6、测试
 
