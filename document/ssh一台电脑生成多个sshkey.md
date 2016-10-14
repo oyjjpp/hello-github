@@ -12,7 +12,7 @@ ssh-keygen -t rsa -C "your@emailcompany" -f ~/.ssh/id_rsa
 
 ssh-keygen -t rsa -C "your@emailpersonal" -f ~/.ssh/id_rsa_github
 
-![](../images/ssh生成多个ssh_key_file.png)
+![](../image/ssh生成多个ssh_key_file.png)
 
 ##3、git（github、gitlab等）服务器设置SSH Key
 
