@@ -2,3 +2,5 @@
 
 
 [网络安全策略-CSP](https://content-security-policy.com/)
+
+[前端技术资料](http://amazeui.org/)
