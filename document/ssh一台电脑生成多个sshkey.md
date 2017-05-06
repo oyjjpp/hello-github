@@ -67,6 +67,11 @@ IdentityFile ~/.ssh/id_rsa_github
 ssh -T git@github.com
 
 
+## 配置用户名及邮箱
+
+git config user.name "oyjjpp"
+git config user.email "ouyangjun92@qq.com"
+
 ##参考：
 
 [http://blog.csdn.net/czhpxl007/article/details/50466087](http://blog.csdn.net/czhpxl007/article/details/50466087)
