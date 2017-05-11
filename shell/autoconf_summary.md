@@ -34,6 +34,10 @@ make && make install
 
 /usr/bin/autoconf -V
 
+### 参考
+
+http://www.cnblogs.com/sunss/archive/2011/07/20/2111697.html
+
 
 
 
