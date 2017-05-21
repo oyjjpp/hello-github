@@ -19,10 +19,6 @@ sudo make prefix=/usr/local install
 
 ### 参考
 
-沉浸式学Git
+1、[沉浸式学Git]http://igit.linuxtoy.org/contents.html
 
-http://igit.linuxtoy.org/contents.html
-
-//git
-
-https://git-scm.com/
+2、[git]https://git-scm.com/

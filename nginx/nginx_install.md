@@ -42,14 +42,17 @@ cd nginx-1.4.2
 
 
 make
+
 make install
 
 --with-pcre=/usr/local/src/pcre-8.39 \    指的是pcre-8.39 的源码路径。
+
 --with-zlib=/usr/local/src/zlib-1.2.11 \    指的是zlib-1.2.11 的源码路径。
+
 --with-openssl=/usr/local/src/openssl-1.0.1t   指的是openssl-1.0.1t 的源码路径。
 
 
 ###　参考：
-1、nginx安装错误汇总： http://blog.csdn.net/qq_29461259/article/details/52609775
+1、[nginx安装错误汇总](http://blog.csdn.net/qq_29461259/article/details/52609775)
 
-２、nginx的启动、停止与重启 http://www.cnblogs.com/codingcloud/p/5095066.html
+２、[nginx的启动、停止与重启](http://www.cnblogs.com/codingcloud/p/5095066.html)
