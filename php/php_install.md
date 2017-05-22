@@ -1,3 +1,5 @@
+
+### php源码安装 configure
 ./configure --prefix=/usr/local/server/php \
 --with-config-file-path=/usr/local/server/php/etc \
 --enable-inline-optimization \
@@ -33,6 +35,28 @@
 --without-pdo-sqlite \
 --with-pear
 
+
+### 添加到环境变量
+
+vim /etc/profile
+
+在文件结尾处添加
+    $PATH=$PATH:/usr/local/server/php
+    export PATH
+
+更改立即生效
+    source /etc/profile
+
+### 问题
+
+1、nginx FastCGI错误Primary script unknown解决办法
+
+nginx.config 配置
+location / {
+   root   /usr/local/nginx/html;
+   index  index.php index.html index.htm;
+   fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+}
 
 ## 参考
 
