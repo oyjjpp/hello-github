@@ -82,12 +82,12 @@ void main()
 > . 第二项
 > . 第三项
 
-效果（+）：
+效果2（+）：
 > + 第一项
 > + 第二项
 > + 第三项
 
-效果（-）：
+效果3（-）：
 > - 第一项
 > - 第二项
 > - 第三项
@@ -102,8 +102,44 @@ void main()
 > 2. 第二项
 > 3. 第三项
 
-### 列表
+#### 8 链接
+链接可以由两种形式生成：**行内式**和**参考式**。    
+**行内式**：
+> \[欧阳俊的document库\]\(https:://github.com/oyjjpp/document "document"\)。
+
+效果：
+> [欧阳俊的document库](https:://github.com/oyjjpp/document "document")。
+
+**参考式**：
+> \[oyjjpp的document库1\]\[1\]    
+> \[oyjjpp的document库2\]\[2\]    
+> \[1\]:https:://github.com/oyjjpp/document "document"    
+> \[2\]:https:://github.com/oyjjpp/document "document"    
+
+效果：
+> [oyjjpp的document库1][1]    
+> [oyjjpp的document库2][2]
+
+[1]: https:://github.com/oyjjpp/document "document"
+[2]: https:://github.com/oyjjpp/document "document"
+
+#### 9、 图片
+添加图片的形式和链接相似，只需在链接的基础上前方加一个`！`。
+![image](http://p1.pstatp.com/origin/184f0000e21ad423057e)
+
+
+#### 10、 反斜杠`\`
+相当于**反转义**作用。使符号成为普通符号。
+
+#### 11、 符号'`'
+起到标记作用。如：
+>\`ctrl+a\`
+
+效果：
+>`ctrl+a`    
+
 
 ### 引用
+> [Markdown][1]
 
-[Markdown](https://github.com/younghz/Markdown/blob/master/README.md#一级标题-1)
+[1]: https://github.com/oyjjpp/Markdown/blob/master/README.md
