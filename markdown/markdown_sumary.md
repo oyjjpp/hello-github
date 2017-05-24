@@ -125,8 +125,7 @@ void main()
 
 #### 9、 图片
 添加图片的形式和链接相似，只需在链接的基础上前方加一个`！`。
-![image](http://p1.pstatp.com/origin/184f0000e21ad423057e)
-
+![image](../static/img/image.jpg)
 
 #### 10、 反斜杠`\`
 相当于**反转义**作用。使符号成为普通符号。
