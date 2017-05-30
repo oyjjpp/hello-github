@@ -64,6 +64,6 @@
 > [深入 理解PHP内核][2]  
 > [与 UNIX 构建系统交互: config.m4][3]  
 
-[1] : http://www.open-open.com/lib/view/open1392188698114.html  
-[2] : http://www.php-internals.com/book/?p=index  
-[3] : http://php.net/manual/zh/internals2.buildsys.configunix.php
+[1]: http://www.open-open.com/lib/view/open1392188698114.html  
+[2]: http://www.php-internals.com/book/?p=index  
+[3]: http://php.net/manual/zh/internals2.buildsys.configunix.php
