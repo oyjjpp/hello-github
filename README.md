@@ -10,6 +10,6 @@
     
 ## nginx总结
 
--nginx常用技术总结
+- nginx常用技术总结
     - 1 [nginx 技术总结](./nginx/nginx_install.md)
     - 2 [niinx 类UNINX下安装](./nginx/summary.md)
