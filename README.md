@@ -11,6 +11,22 @@
 ## 学习 Nginx
 
 - nginx常用技术总结
-    - 1 [nginx 技术总结](./nginx/nginx_install.md)
-    - 2 [nginx 类UNINX下安装](./nginx/summary.md)
-    - 3 [PHP 扩展开发](./php/PHP_extend.md)
+    - 1 [nginx 技术总结](./nginx/summary.md)
+    - 2 [nginx 类UNINX下安装](./nginx/nginx_install.md)
+
+## JavaScript
+
+- JavaScript常用技术总结
+    - 1 [JavaScript 技术总结](./javascript/summary.md)
+    - 2 [节流函数](./javascript/throttle.md)
+
+## MarkDown
+
+- MarkDown常用技术总结
+    - 1 [MarkDown 技术总结](./markdown/markdown_sumary.md)
+
+## Shell
+
+- Shell常用技术总结
+    - 1 [autoconf](./shell/autoconf_summary.md)
+    - 2 [shell常用命令](./shell/shell_summary.md)
