@@ -2,6 +2,7 @@
 
 ### 1 为什么编写PHP扩展
 使用php代码编写 请求一个数组元素的平方和
+
     <?php
         function array_square_sum($data){
             $sum = 0;
@@ -55,17 +56,19 @@
     -rw-r--r-- 1 root root 2476 May 11 08:26 php_array_square_sum.h
     drwxr-xr-x 2 root root 4096 May 11 08:26 tests
 
-#### 2.3.1 配置文件config.m4
-config.m4 作用
+##### 2.3.1 配置文件config.m4
+> 1、告诉unix系统哪些扩展configure选项是支持的？  
+> 2、需要哪些扩展库？  
+> 3、哪些源文件要编译成它的一部分？  
 
 config.m4 文件使用 GNU autoconf 语法编写  
 注释：dnf  
 字符串:[]  
 
-1、告诉unix系统哪些扩展configure选项是支持的？  
-2、需要哪些扩展库？  
-3、哪些源文件要编译成它的一部分？  
-    
+
+*注意*
+在调用 configure 时，不管选项在命令行中的顺序如何，都会按在 config.m4 中指定的顺序进行检测。
+
 ### 参考
 > [一步步入门编写PHP扩展][1]  
 > [深入 理解PHP内核][2]  
