@@ -19,8 +19,23 @@
 > 第二个是实际执行的文件  
 
 #### 2.1 通过源码中的 ext_skel 可以生成扩展框架
-
+PHP 扩展由几个文件组成，这些文件对所有扩展来说都是通用的。不同扩展之间，这些文件的很多细节是相似的，只是要费力去复制每个文件的内容。幸运的是，有脚本可以做所有的初始化工作，名为 ext_skel，自 PHP 4.0 起与其一起分发。  
 位置：/php-src/ext/ext_skel
+
+    [root@iZ2ze1yhgn9t43zixdpjvcZ ext]# ./ext_skel 
+    ./ext_skel --extname=module [--proto=file] [--stubs=file] [--xml[=file]]
+               [--skel=dir] [--full-xml] [--no-help]
+
+      --extname=module   module is the name of your extension
+      --proto=file       file contains prototypes of functions to create
+      --stubs=file       generate only function stubs in file
+      --xml              generate xml documentation to be added to phpdoc-svn
+      --skel=dir         path to the skeleton directory
+      --full-xml         generate xml documentation for a self-contained extension
+                         (not yet implemented)
+      --no-help          don't try to be nice and create comments in the code
+                         and helper functions to test if the module compiled
+
 
 #### 2.2 执行扩展
     $ ./ext_skel --extname=array_square_sum
