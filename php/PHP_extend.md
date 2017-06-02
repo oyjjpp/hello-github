@@ -81,6 +81,7 @@ config.m4 文件使用 GNU autoconf 语法编写
 字符串:[]  
 
 *改动*
+    
     dnl PHP_ARG_WITH(array_square_sum, for array_square_sum support,
     dnl Make sure that the comment is aligned:
     dnl [  --with-array_square_sum             Include array_square_sum support])
@@ -100,6 +101,7 @@ config.m4 文件使用 GNU autoconf 语法编写
 
 *改动*  
 添加 PHP_FUNCTION(array_square_sum);  
+
     PHP_FUNCTION(array_square_sum);
     
 ##### 2.3.3 array_square_sum.c
