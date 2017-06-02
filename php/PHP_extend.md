@@ -80,10 +80,31 @@ config.m4 文件使用 GNU autoconf 语法编写
 注释：dnf  
 字符串:[]  
 
+*改动*
+    dnl PHP_ARG_WITH(array_square_sum, for array_square_sum support,
+    dnl Make sure that the comment is aligned:
+    dnl [  --with-array_square_sum             Include array_square_sum support])
+    
+    修改之后  
+    
+    PHP_ARG_WITH(array_square_sum, for array_square_sum support,
+    Make sure that the comment is aligned:
+    [  --with-array_square_sum             Include array_square_sum support])
 
 *注意*
 在调用 configure 时，不管选项在命令行中的顺序如何，都会按在 config.m4 中指定的顺序进行检测。
 
+
+##### 2.3.2 php_array_square_sum.h
+当将扩展作为静态模块构建并放入 PHP 二进制包时，构建系统要求用 php_ name（扩展的名称命名）的头文件包含一个对扩展模块结构的指针定义。就象其他头文件，此文件经常包含附加的宏、原型和全局量。
+
+*改动*  
+添加 PHP_FUNCTION(array_square_sum);  
+    PHP_FUNCTION(array_square_sum);
+    
+##### 2.3.3 array_square_sum.c
+主要的扩展源文件。按惯例，此文件名就是扩展的名称，但不是必需的。此文件包含模块结构定义、INI 条目、管理函数、用户空间函数和其它扩展所需的内容。    
+    
 ### 参考
 > [一步步入门编写PHP扩展][1]  
 > [深入 理解PHP内核][2]  
