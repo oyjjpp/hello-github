@@ -105,7 +105,44 @@ config.m4 文件使用 GNU autoconf 语法编写
     PHP_FUNCTION(array_square_sum);
     
 ##### 2.3.3 array_square_sum.c
-主要的扩展源文件。按惯例，此文件名就是扩展的名称，但不是必需的。此文件包含模块结构定义、INI 条目、管理函数、用户空间函数和其它扩展所需的内容。    
+主要的扩展源文件。按惯例，此文件名就是扩展的名称，但不是必需的。此文件包含模块结构定义、INI 条目、管理函数、用户空间函数和其它扩展所需的内容。  
+
+添加以下函数  
+
+    const zend_function_entry array_square_sum_functions[] = { 
+        PHP_FE(array_square_sum,    NULL)       /* For testing, remove later. */
+        PHP_FE_END  /* Must be the last line in array_square_sum_functions[] */
+    }; 
+
+    PHP_FUNCTION(array_square_sum)
+    {
+        zval* array_data;
+        HashTable *ht_data;
+        int ret;
+        char* key;
+        uint index;
+        zval **pdata;
+        double sum = 0;
+
+        if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "a", &array_data) == FAILURE) {
+            return;
+        }   
+
+        ht_data = Z_ARRVAL_P(array_data);
+        zend_hash_internal_pointer_reset(ht_data);
+        while ( HASH_KEY_NON_EXISTANT != (ret = zend_hash_get_current_key(ht_data, &key, &index, 0)) ) { 
+            ret = zend_hash_get_current_data(ht_data, &pdata);
+        
+            if( Z_TYPE_P(*pdata) == IS_LONG){
+                sum +=  Z_LVAL_P(*pdata) *  Z_LVAL_P(*pdata);
+            }else {
+                RETURN_FALSE;
+            }   
+            zend_hash_move_forward(ht_data);
+        }   
+        zend_hash_internal_pointer_end(Z_ARRVAL_P(array_data));
+        RETVAL_DOUBLE(sum);
+    } 
     
 ### 参考
 > [一步步入门编写PHP扩展][1]  
