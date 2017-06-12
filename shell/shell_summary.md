@@ -11,3 +11,7 @@ whereis autoconf
 ### 只显示当前目录下的文件
 
 ls -al | grep "^-"
+
+### 查看端口使用
+
+netstat -anl | grep "80" 

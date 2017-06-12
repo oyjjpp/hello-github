@@ -143,6 +143,8 @@ config.m4 文件使用 GNU autoconf 语法编写
         zend_hash_internal_pointer_end(Z_ARRVAL_P(array_data));
         RETVAL_DOUBLE(sum);
     } 
+
+#### 3 安装扩展
     
 ### 参考
 > [一步步入门编写PHP扩展][1]  
