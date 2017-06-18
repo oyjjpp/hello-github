@@ -167,7 +167,6 @@ web服务脚本：fpm、apache2handler、cgi
     961     STANDARD_SAPI_MODULE_PROPERTIES
     962 };
 
-#### 参考：
 
 ### 参考
 > [深入PHP内核（二）——SAPI探究][1]  
