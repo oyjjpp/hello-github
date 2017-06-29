@@ -86,7 +86,13 @@ vim say.c
     [root@iZ2ze1yhgn9t43zixdpjvcZ say]# make install
     Installing shared extensions:     /usr/local/server/php/lib/php/extensions/no-debug-non-zts-20160303/
 
-***以上为创建say扩展的过程***
+> **以上为创建say扩展的过程**
+
+#### 9、加载到PHP中
+
+    say.so copy到php扩展目录下 extension_dir  
+    修改php.ini 添加extension = say.so  
+    重启nginx和php-fpm
 
 #### php版本信息
     [root@iZ2ze1yhgn9t43zixdpjvcZ say]# php -v
@@ -101,10 +107,8 @@ vim say.c
     $str = sayhello('ouyangjun');
     var_dump($str);
 
-最终输出  
-string(10) "hello word"
-
-#### 3 安装扩展
+#### 最终输出  
+> string(10) "hello word"
     
 ### 参考
 > [PHP扩展开发与内核应用][1]  
