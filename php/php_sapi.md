@@ -171,6 +171,8 @@ web服务脚本：fpm、apache2handler、cgi
 ### 参考
 > [深入PHP内核（二）——SAPI探究][1]  
 > [深入理解PHP内核][2]  
+> [深入理解Zend SAPIs(Zend SAPI Internals)][3]  
 
 [1]: http://www.csdn.net/article/2014-09-26/2821885-exploring-of-the-php-2  
 [2]: http://www.php-internals.com/book/?p=chapt02/02-02-00-overview  
+[3]: http://www.laruence.com/2008/08/12/180.html
