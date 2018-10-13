@@ -30,3 +30,8 @@
 - Shell常用技术总结
     - 1 [autoconf](./shell/autoconf_summary.md)
     - 2 [shell常用命令](./shell/shell_summary.md)
+    
+## 数据结构
+
+- 树
+    -1 [B树、B+树、B*树](https://www.jianshu.com/p/db226e0196b4)
