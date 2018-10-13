@@ -34,4 +34,4 @@
 ## 数据结构
 
 - 树
-    -1 [B树、B+树、B*树](https://www.jianshu.com/p/db226e0196b4)
+    - 1 [B树、B+树、B*树](https://www.jianshu.com/p/db226e0196b4)
