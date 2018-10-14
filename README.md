@@ -41,3 +41,4 @@
   
 - 常见术语  
     - 1 [OLAP、OLTP的介绍和比较](https://www.cnblogs.com/hhandbibi/p/7118740.html)
+    - 2 [ORM是什么？如何理解ORM](https://www.cnblogs.com/huanhang/p/6054908.html)
