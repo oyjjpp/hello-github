@@ -42,3 +42,5 @@
 - 常见术语  
     - 1 [OLAP、OLTP的介绍和比较](https://www.cnblogs.com/hhandbibi/p/7118740.html)
     - 2 [ORM是什么？如何理解ORM](https://www.cnblogs.com/huanhang/p/6054908.html)
+- 索引
+    - 1 [MyISAM和InnoDB的索引实现](https://www.cnblogs.com/zlcxbb/p/5757245.html)
