@@ -44,3 +44,4 @@
     - 2 [ORM是什么？如何理解ORM](https://www.cnblogs.com/huanhang/p/6054908.html)
 - 索引
     - 1 [MyISAM和InnoDB的索引实现](https://www.cnblogs.com/zlcxbb/p/5757245.html)
+    - 2 [联合索引的最左前缀匹配原则](https://www.jianshu.com/p/b7911e0394b0)
