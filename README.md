@@ -1,7 +1,7 @@
 # 目录
 常用技术的总结
 
-##开发语言
+## 开发语言
 
 ### PHP
 
@@ -28,7 +28,7 @@
     - 1 [MarkDown 技术总结](./markdown/markdown_sumary.md)
 
 
-##服务器
+## 服务器
 
 ### Nginx
 
@@ -45,7 +45,7 @@
 
 ## 数据库
 
-###mysql数据库
+### mysql数据库
 
 - 常见术语  
     - 1 [OLAP、OLTP的介绍和比较](https://www.cnblogs.com/hhandbibi/p/7118740.html)
