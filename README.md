@@ -46,3 +46,5 @@
     - 1 [MyISAM和InnoDB的索引实现](https://www.cnblogs.com/zlcxbb/p/5757245.html)
     - 2 [联合索引的最左前缀匹配原则](https://www.jianshu.com/p/b7911e0394b0)
     - 3 [聚集索引和非聚集索引](http://www.cnblogs.com/aspnethot/articles/1504082.html)
+- 优化
+    - 1 [MySQL 性能优化神器 Explain 使用分析](https://segmentfault.com/a/1190000008131735#articleHeader5)
