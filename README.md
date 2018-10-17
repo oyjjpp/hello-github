@@ -56,3 +56,9 @@
     - 3 [聚集索引和非聚集索引](http://www.cnblogs.com/aspnethot/articles/1504082.html)
 - 优化
     - 1 [MySQL 性能优化神器 Explain 使用分析](https://segmentfault.com/a/1190000008131735#articleHeader5)
+    
+### mongodb
+
+- 常用技术
+    - 1 [Mongodb后台daemon方式启动](http://chenzhou123520.iteye.com/blog/1634676)
+
