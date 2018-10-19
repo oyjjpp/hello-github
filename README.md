@@ -61,4 +61,12 @@
 
 - 常用技术
     - 1 [Mongodb后台daemon方式启动](http://chenzhou123520.iteye.com/blog/1634676)
+    
+## 安全
+
+### 加密算法
+
+-?
+    - 1 [openssl 下的对称加密和非对称加密](https://www.cnblogs.com/fxyy/p/8868351.html)
+    
 
