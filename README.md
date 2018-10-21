@@ -64,6 +64,14 @@
     - 2 [MongoDB的数据复制和数据切片](http://blog.51cto.com/ljbaby/1696180)
     - 3 [Mongodb相对于关系型数据库的优缺点](http://mxdxm.iteye.com/blog/2093603)
     
+## 性能
+
+### 主要性能参考参数
+
+- 服务端参数
+
+    - 1 [TPS、并发用户数、吞吐量关系](https://www.cnblogs.com/zhengah/p/4532156.html)
+
 ## 安全
 
 ### 加密算法
