@@ -45,6 +45,9 @@
 
 ## 数据库
 
+- 基本概念
+    - 1 [行式数据库与列式数据库](https://blog.csdn.net/u011397715/article/details/41249081)
+
 ### mysql数据库
 
 - 常见术语  
