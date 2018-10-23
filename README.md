@@ -64,6 +64,11 @@
     - 2 [MongoDB的数据复制和数据切片](http://blog.51cto.com/ljbaby/1696180)
     - 3 [Mongodb相对于关系型数据库的优缺点](http://mxdxm.iteye.com/blog/2093603)
     
+### HBase
+
+- 教程
+    - 1 [HBase教程](https://www.yiibai.com/hbase/hbase_architecture.html)
+
 ## 性能
 
 ### 主要性能参考参数
