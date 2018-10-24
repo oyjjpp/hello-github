@@ -84,7 +84,9 @@
 
 ### 加密算法
 
-- ?
+- 无标题
     - 1 [openssl 下的对称加密和非对称加密](https://www.cnblogs.com/fxyy/p/8868351.html)
+    - 2 [AES加密算法的详细介绍与实现](https://blog.csdn.net/qq_28205153/article/details/55798628)
+    - 3 [PHP由mcrypt扩展加密改为openssl扩展加密](https://www.xxling.com/blog/article/3114.aspx)
     
 
