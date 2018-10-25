@@ -1,6 +1,11 @@
 # 目录
 常用技术的总结
 
+## 工具
+
+- 日常使用工具
+    - 1 [chrome代理配置](https://www.switchyomega.com/)
+
 ## 开发语言
 
 ### PHP
