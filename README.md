@@ -6,6 +6,9 @@
 - 日常使用工具
     - 1 [chrome代理配置](https://www.switchyomega.com/)
 
+- 常用网站
+    - 1 [web技术统计](https://w3techs.com)
+
 ## 开发语言
 
 ### PHP
@@ -14,6 +17,29 @@
     - 1 [PHP技术总结](./php/summary.md)
     - 2 [PHP 类UNINX下安装](./php/php_install.md)
     - 3 [PHP 扩展开发](./php/PHP_extend.md)
+    - 4 [php内核](http://www.nowamagic.net/librarys/veda/detail/1285)
+    - 5 [php内核简介](http://www.php-internals.com/)
+    - 6 [php设计模式](http://www.lai18.com/cate/110.html)
+    - 7 [php分词过滤](http://blog.41ms.com/post/41.html)
+
+- 市场常见开发框架及CMS
+    - 1 [Laravel](http://www.golaravel.com/laravel/docs/5.0/,"Laravel")
+    - 2 [Smarty](http://www.php100.com/manual/smarty3/, "smarty")
+    - 3 [ThinkPHP3.2](http://document.thinkphp.cn/manual_3_2.html,"ThinkPHP3.2")
+    - 4 [discuzt](http://discuzt.cr180.com/)
+    - 5 [phpcms2008开发文档](http://www.phpcms.cn/doc/PHPCMSDocumentor/function_chinese.html)
+
+- 第三方开发接口
+    - 1 [公众平台开发文档](http://mp.weixin.qq.com/wiki/18/28fc21e7ed87bec960651f0ce873ef8a.html)
+    - 2 [微信企业号开发文档](http://qydev.weixin.qq.com/wiki/index.php?title=%E9%A6%96%E9%A1%B5)
+    - 3 [企业微信号开发文档](http://qydev.weixin.qq.com/wiki/index.php?title=%E9%A6%96%E9%A1%B5)
+### golang
+
+- 学习资料
+    - 1 [go语言学习视频](http://www.ucai.cn/course/show/69)
+    - 2 [go基础教程](https://github.com/Unknwon/the-way-to-go_ZH_CN/blob/master/eBook/directory.md)
+    - 3 [golang学习](http://yougg.github.io/static/gonote/GolangStudy.html)
+
 
 ### JavaScript
 
@@ -26,6 +52,9 @@
 - Shell常用技术总结
     - 1 [autoconf](./shell/autoconf_summary.md)
     - 2 [shell常用命令](./shell/shell_summary.md)
+    - 3 [linux命令参考](http://man.linuxde.net/)
+    - 4 [linux在线教程](http://c.biancheng.net/cpp/html/2726.html)
+    - 5 [awk语言简洁](http://awk.readthedocs.org/en/latest/chapter-one.html)
 
 ### MarkDown
 
