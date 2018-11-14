@@ -8,6 +8,14 @@
 
 ## 常见包
 
+### strconv
+
+  - 简介
+  strconv包实现了基本数据类型和其字符串表示的相互转换。
+
+  - 参考
+    - 1 [Golang学习 - strconv 包](https://www.cnblogs.com/golove/p/3262925.html)
+
 ###  testing
 
   - 简介
@@ -15,23 +23,46 @@
     测试文件包含test functions（自动化测试）, benchmark functions（基准测试）, and example functions
 
   - 自动化测试
+    - 1 执行测试命令
+    ```go
+        //执行所有_test.go文件
+        go test
+
+        //输出详细的测试信息
+        go test -v
+
+        //指定文件
+        go test -v main.go
+
+        //执行指定函数
+        go test -v -test.run TestAdd
+
+        //正则匹配测试函数
+        go test -v -run A
+    ```
 
   - 基准测试
-
     - 1 执行测试命令
       ```go
             //执行所有测试用例
             go test -bench=.
 
             //仅执行基准测试用例
+            //-run=none
             go test -bench=. -run=none
 
             //执行具体的基准测试函数(BenchmarkArray)
             go test -bench=Array -run=none
+
+            //内容消耗情况
+            //-benchmem可以提供每次操作分配内存的次数，以及每次操作分配的字节数
+            go test -bench=Array -run=none -benchmem
+
+            //正则匹配所有Plus开头的基准测试函数
+            go test -bench Plus
       ````
 
     - 2 测试结果分析
-
         ```go
             ➜  test go test -v -bench=Array -run=none
             goos: linux
@@ -43,9 +74,32 @@
 
             //意味着循环执行了 1000000 次，每次循环花费 1342 纳秒(ns)。
         ```
-
+    - 3 常用函数
+        ```go
+        b.ResetTimer() 是重置计时器，这样可以避免for循环之前的初始化代码的干扰
+        ```
   - 示例测试
+    - 1 案列
+        ```go
+           func ExampleHello() {
+                   fmt.Println("hello")
+                   // Output: hello
+           }
 
+          //不考虑输出顺序
+          func ExamplePerm() {
+              for _, value := range Perm(4) {
+                  fmt.Println(value)
+              }
+              // Unordered output: 4
+              // 2
+              // 1
+              // 3
+              // 0
+          }
+        ```
+     - 2 注意
+     **没有输出注释的示例函数被编译但不执行**。
   - 参考
     - 1 [基准测试](https://zhangwenbing.com/blog/golang/HyNlPG-Fq8Q)
 
