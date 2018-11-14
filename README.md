@@ -9,7 +9,7 @@
 - 常用网站
     - 1 [web技术统计](https://w3techs.com)
 
-## 开发语言
+## [开发语言](http://www.cnblogs.com/jingmoxukong/p/8193709.html)
 
 ### PHP
 
@@ -40,6 +40,8 @@
     - 2 [go基础教程](https://github.com/Unknwon/the-way-to-go_ZH_CN/blob/master/eBook/directory.md)
     - 3 [golang学习](http://yougg.github.io/static/gonote/GolangStudy.html)
 
+- 市场常见开发框架及CMS
+    - 1 [beego](https://beego.me/)
 
 ### JavaScript
 
@@ -123,4 +125,10 @@
     - 2 [AES加密算法的详细介绍与实现](https://blog.csdn.net/qq_28205153/article/details/55798628)
     - 3 [PHP由mcrypt扩展加密改为openssl扩展加密](https://www.xxling.com/blog/article/3114.aspx)
     
+## 网络
 
+### 协议
+
+- 无标题
+    - 1 [HTTP长连接、短连接究竟是什么？](http://www.cnblogs.com/gotodsp/p/6366163.html)
+    - 2 [HTTP 的长连接和短连接](http://blog.jobbole.com/104108/)
