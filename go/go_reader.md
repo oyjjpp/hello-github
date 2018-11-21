@@ -6,6 +6,11 @@
 - [beego](https://beego.me/)
 - [go实现的定时器](https://github.com/robfig/cron)
 
+## 相关书籍
+
+- [Go语言实战: 编写可维护Go语言代码建议](https://github.com/llitfkitfk/go-best-practice#51-%E8%80%83%E8%99%91%E6%9B%B4%E5%B0%91%E6%9B%B4%E5%A4%A7%E7%9A%84%E5%8C%85)
+
+
 ## 常见包
 
 ### strconv
