@@ -16,20 +16,34 @@
 ### strconv
 
   - 简介
-  strconv包实现了基本数据类型和其字符串表示的相互转换。
+  
+	strconv包实现了基本数据类型和其字符串表示的相互转换。
 
-  - 参考
-    - 1 [Golang学习 - strconv 包](https://www.cnblogs.com/golove/p/3262925.html)
+
+### bytes
+
+ - 简介
+
+	bytes包实现了操作[]byte的常用函数
+
+	```go
+
+		type byte byte
+		8位无符号整型，是uint8的别名，二者视为同一类型。
+	```
 
 ###  testing
 
-  - 简介
+ - 简介
 
     测试文件包含test functions（自动化测试）, benchmark functions（基准测试）, and example functions
 
-  - 自动化测试
+ - 自动化测试
     - 1 执行测试命令
+    
+
     ```go
+
         //执行所有_test.go文件
         go test
 
@@ -46,29 +60,32 @@
         go test -v -run A
     ```
 
-  - 基准测试
-    - 1 执行测试命令
-      ```go
-            //执行所有测试用例
-            go test -bench=.
+ - 基准测试
+	- 1 执行测试命令
+      
+	```go
+        
+		//执行所有测试用例
+        go test -bench=.
 
-            //仅执行基准测试用例
-            //-run=none
-            go test -bench=. -run=none
+        //仅执行基准测试用例
+        //-run=none
+        go test -bench=. -run=none
 
-            //执行具体的基准测试函数(BenchmarkArray)
-            go test -bench=Array -run=none
+        //执行具体的基准测试函数(BenchmarkArray)
+        go test -bench=Array -run=none
 
-            //内容消耗情况
-            //-benchmem可以提供每次操作分配内存的次数，以及每次操作分配的字节数
-            go test -bench=Array -run=none -benchmem
+        //内容消耗情况
+        //-benchmem可以提供每次操作分配内存的次数，以及每次操作分配的字节数
+        go test -bench=Array -run=none -benchmem
 
-            //正则匹配所有Plus开头的基准测试函数
-            go test -bench Plus
-      ````
+        //正则匹配所有Plus开头的基准测试函数
+        go test -bench Plus
+	````
 
     - 2 测试结果分析
-        ```go
+        
+	```go
             ➜  test go test -v -bench=Array -run=none
             goos: linux
             goarch: amd64
@@ -79,33 +96,42 @@
 
             //意味着循环执行了 1000000 次，每次循环花费 1342 纳秒(ns)。
         ```
-    - 3 常用函数
-        ```go
+    
+	- 3 常用函数
+    
+    ```go
         b.ResetTimer() 是重置计时器，这样可以避免for循环之前的初始化代码的干扰
         ```
-  - 示例测试
+ - 示例测试
+ 
     - 1 案列
-        ```go
-           func ExampleHello() {
-                   fmt.Println("hello")
-                   // Output: hello
-           }
+    
+	```go
+	
+	       func ExampleHello() {
+	               fmt.Println("hello")
+	               // Output: hello
+	       }
+	
+	      //不考虑输出顺序
+	      func ExamplePerm() {
+	          for _, value := range Perm(4) {
+	              fmt.Println(value)
+	          }
+	          // Unordered output: 4
+	          // 2
+	          // 1
+	          // 3
+	          // 0
+	      }
+	    ```
 
-          //不考虑输出顺序
-          func ExamplePerm() {
-              for _, value := range Perm(4) {
-                  fmt.Println(value)
-              }
-              // Unordered output: 4
-              // 2
-              // 1
-              // 3
-              // 0
-          }
-        ```
      - 2 注意
+     
      **没有输出注释的示例函数被编译但不执行**。
-  - 参考
+ 
+ - 参考
+ 
     - 1 [基准测试](https://zhangwenbing.com/blog/golang/HyNlPG-Fq8Q)
 
 ###  time
@@ -113,7 +139,9 @@
  - 基础功能
 
     - 1 获取当前时间及当前时间戳
+
     ```go
+
         //获取当前时间
         func getCurrentTime(layout string)  string{
             if layout == "" {
@@ -126,6 +154,7 @@
     ```
 
     ```go
+
         //获取当前时间戳
         func getCurrentTimeUnix()  int64{
             return time.Now().Unix()
@@ -135,7 +164,9 @@
     ```
 
     - 2 将给定时间字符串转换成时间类型及时间戳
+    
     ```go
+
         //将时间字符串转换成time类型，当前时区
         func formatStringToTime(layout, value string) (time.Time, error) {
             if layout == "" {
@@ -149,7 +180,9 @@
     ```
 
     - 3 将给定的时间戳转换成时间类型及时间戳
+    
     ```go
+
         //将整型转换为time类型
         func formatIntToTime(value int64) time.Time{
             return time.Unix(value, 0)
@@ -162,7 +195,9 @@
     ```
 
     - 4 计算两个时间的区段
+    
     ```go
+
         //获取两个时间的时间间隔
         func getTimeSub(startTime, endTime time.Time) time.Duration{
             return endTime.Sub(startTime)
@@ -174,4 +209,6 @@
         }
     ```
 
+### 参考
+- 1 [Golang包](https://www.cnblogs.com/golove/tag/Golang%E5%8C%85/)
 
