@@ -15,24 +15,24 @@
 
 ### strconv
 
-  - 简介
+- 简介
   
-	strconv包实现了基本数据类型和其字符串表示的相互转换。
+strconv包实现了基本数据类型和其字符串表示的相互转换。
 
 
 ### bytes
 
- - 简介
+- 简介
 
-	bytes包实现了操作[]byte的常用函数
+bytes包实现了操作[]byte的常用函数
 
-	```go
+```go
+type byte byte
+8位无符号整型，是uint8的别名，二者视为同一类型。
+```
 
-	type byte byte
-	8位无符号整型，是uint8的别名，二者视为同一类型。
-	```
 
- - 转换（大小写）
+- 转换（大小写）
  
 	// 将 s 中的所有字符修改为大写（小写、标题）格式返回。
 
@@ -137,6 +137,73 @@
 		fmt.Printf("%q\n", bytes.Repeat(a,3))
 	}
 	```
+
+ - 清理
+	
+	// 去掉 s 两边（左边、右边）包含在 cutset 中的字符（返回 s 的切片）
+
+	func Trim(s []byte, cutset string) []byte
+	
+	func TrimLeft(s []byte, cutset string) []byte
+
+	func TrimRight(s []byte, cutset string) []byte
+	
+	// 去掉 s 两边（左边、右边）符合 f 要求的字符（返回 s 的切片）
+
+	func TrimFunc(s []byte, f func(r rune) bool) []byte
+
+	func TrimLeftFunc(s []byte, f func(r rune) bool) []byte
+
+	func TrimRightFunc(s []byte, f func(r rune) bool) []byte
+	
+	// 去掉 s 两边的空白（unicode.IsSpace）（返回 s 的切片）
+
+	func TrimSpace(s []byte) []byte
+	
+	// 去掉 s 的前缀 prefix（后缀 suffix）（返回 s 的切片）
+
+	func TrimPrefix(s, prefix []byte) []byte
+
+	func TrimSuffix(s, suffix []byte) []byte
+
+	```go
+	
+	//清理
+	func bytesTrim()  {
+		bs := [][]byte{
+			[]byte("Hello World ！"),
+			[]byte("Hello 世界！"),
+			[]byte("hello golang ."),
+		}
+	
+		f := func(r rune) bool{
+			return bytes.ContainsRune([]byte("!！.。"), r)
+		}
+	
+		for _,b := range bs{
+			fmt.Printf("%q\n", bytes.TrimFunc(b, f))
+		}
+	
+		for _, b := range bs {
+			fmt.Printf("%q\n", bytes.TrimPrefix(b, []byte("Hello")))
+		}
+	
+		a := []byte(",I am a gopher,")
+		fmt.Printf("Origin:%q\n", a)
+		fmt.Printf("Trim:%q\n", bytes.Trim(a,",I"))
+		fmt.Printf("TrimRight:%q\n", bytes.TrimRight(a,","))
+		fmt.Printf("TrimLeft:%q\n", bytes.TrimLeft(a,","))
+	
+		b := []byte(" I am a gopher ")
+		fmt.Printf("Origin:%q\n", b)
+		fmt.Printf("TrimSpace:%q\n", bytes.TrimSpace(b))
+	}
+
+	```
+
+ - 比较
+ - 查询子串
+
 
 ###  testing
 
