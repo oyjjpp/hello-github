@@ -13,16 +13,87 @@
 
 ## 相关书籍
 
-- [Go语言实战: 编写可维护Go语言代码建议](https://github.com/llitfkitfk/go-best-practice#51-%E8%80%83%E8%99%91%E6%9B%B4%E5%B0%91%E6%9B%B4%E5%A4%A7%E7%9A%84%E5%8C%85)
+- [Go语言实战: 编写可维护Go语言代码建议](https://github.com/llitfkitfk/go-best-practice)
 - [雨痕 go学习笔记](https://github.com/qyuhen/book)
-- [Go 入门指南](https://github.com/Unknwon/the-way-to-go_ZH_CN)
-
+- [Go 入门指南-github](https://github.com/Unknwon/the-way-to-go_ZH_CN)
+- [Go 入门指南-kancloud](https://www.kancloud.cn/kancloud/the-way-to-go/72432)
 
 ## 常见包
+
+### io相关
+
+#### io
+
+### 网络相关
+
+#### net
+#### sync
+
+### 数据库相关
+
+#### database/sql
+#### database/sql/driver
 
 ### 字符串相关
 
 #### fmt
+
+###### 1、简介
+包实现了类似C语言printf和scanf的格式化I/O
+
+###### 2、标准输出
+>// Print 将参数列表 a 中的各个参数转换为字符串并写入到标准输出中。  
+// 非字符串参数之间会添加空格，返回写入的字节数。  
+func Print(a ...interface{}) (n int, err error)
+
+>// Println 功能类似 Print，只不过最后会添加一个换行符。  
+// 所有参数之间会添加空格，返回写入的字节数。  
+func Println(a ...interface{}) (n int, err error)
+
+>// Printf 将参数列表 a 填写到格式字符串 format 的占位符中。  
+// 填写后的结果写入到标准输出中，返回写入的字节数。  
+func Printf(format string, a ...interface{}) (n int, err error)
+
+    //常见输出
+    func fmtPrint()  {
+        fmt.Print("aaa", 12, []byte("fmt"))
+        fmt.Println("aaa", 12, []byte("fmt"))
+        fmt.Printf("one type : %v,two type : %v,three type : %v\n", "aaa", 12, []byte("fmt"))
+    }
+
+###### 3、通过Sprint将参数转换为字符串
+
+>// 功能同上面三个函数，只不过将转换结果以字符串形式返回。  
+func Sprint(a ...interface{}) string  
+func Sprintln(a ...interface{}) string  
+func Sprintf(format string, a ...interface{}) string
+
+
+    //通过Sprint将参数转换为字符串
+    func fmtSPrint()  {
+        s1 := fmt.Sprint("aaa", 12, []byte("fmt"))
+        s2 := fmt.Sprintln("aaa", 12, []byte("fmt"))
+        s3 := fmt.Sprintf("one type : %v,two type : %v,three type : %v\n", "aaa", 12, []byte("fmt"))
+
+        fmt.Println(s1, s2, s3)
+    }
+
+###### 4、将转换结果写入到write中
+>// 功能同上面三个函数，只不过将转换结果写入到 w 中。  
+func Fprint(w io.Writer, a ...interface{}) (n int, err error)  
+func Fprintln(w io.Writer, a ...interface{}) (n int, err error)  
+func Fprintf(w io.Writer, format string, a ...interface{}) (n int, err error)
+
+    func fmtFPrint() {
+        // unbuffered
+        fmt.Fprintf(os.Stdout, "%s\n", "hello world! - unbuffered")
+        // buffered: os.Stdout implements io.Writer
+        buf := bufio.NewWriter(os.Stdout)
+        // and now so does buf.
+        fmt.Fprintf(buf, "%s\n", "hello world! - buffered")
+        buf.Flush()
+    }
+
 
 #### strings
 
