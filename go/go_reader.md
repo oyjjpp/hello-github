@@ -32,6 +32,202 @@
 
 strconv包实现了基本数据类型和其字符串表示的相互转换。
 
+###### 2、与bool类型相互转换
+
+>// 将布尔值转换为字符串 true 或 false  
+func FormatBool(b bool) string
+
+>// 将字符串转换为布尔值  
+// 它接受真值：1, t, T, TRUE, true, True  
+// 它接受假值：0, f, F, FALSE, false, False  
+// 其它任何值都返回一个错误。  
+func ParseBool(str string) (bool, error)
+
+
+    func strconvBool()  {
+      var a bool = true
+      rs := strconv.FormatBool(a)
+      fmt.Printf("Type is %T, value is %v\n", rs, rs)
+
+      bo, err := strconv.ParseBool(rs)
+      if err != nil {
+          fmt.Printf("Type is %T, value is %v\n", bo, bo)
+      }
+    }
+
+###### 3、与整型相互转换
+
+>// 将整数转换为字符串形式。base 表示转换进制，取值在 2 到 36 之间。  
+// 结果中大于 10 的数字用小写字母 a - z 表示。  
+func FormatInt(i int64, base int) string  
+func FormatUint(i uint64, base int) string  
+
+>// 将字符串解析为整数，ParseInt 支持正负号，ParseUint 不支持正负号。  
+// base 表示进位制（2 到 36），如果 base 为 0，则根据字符串前缀判断，  
+// 前缀 0x 表示 16 进制，前缀 0 表示 8 进制，否则是 10 进制。  
+// bitSize 表示结果的位宽（包括符号位），0 表示最大位宽。  
+func ParseInt(s string, base int, bitSize int) (i int64, err error)  
+func ParseUint(s string, base int, bitSize int) (uint64, error)  
+
+>// 将整数转换为十进制字符串形式（即：FormatInt(i, 10) 的简写）  
+func Itoa(i int) string  
+
+>// 将字符串转换为十进制整数，即：ParseInt(s, 10, 0) 的简写）  
+func Atoi(s string) (int, error)
+
+    func strconvInt() {
+        var a int64 = 1992
+        var b uint64 = uint64(a)
+        //整型转换到字符串
+        rs1 := strconv.FormatInt(a, 2)
+        rs2 := strconv.FormatUint(b, 2)
+        fmt.Printf("Type is %T, value is %v\n", rs1, rs1)
+        fmt.Printf("Type is %T, value is %v\n", rs2, rs2)
+
+        rs3 := strconv.Itoa(1992)
+        fmt.Printf("Type is %T, value is %v\n", rs3, rs3)
+
+        //字符串换换到整型
+        result1, err := strconv.ParseInt(rs1, 2, 0)
+        if err == nil {
+            fmt.Printf("Type is %T, value is %v\n", result1, result1)
+        }
+
+        result2, err := strconv.ParseUint(rs2, 2, 0)
+        if err == nil {
+            fmt.Printf("Type is %T, value is %v\n", result2, result2)
+        }
+
+        result3, err := strconv.Atoi(rs3)
+        if err == nil {
+            fmt.Printf("Type is %T, value is %v\n", result3, result3)
+        }
+    }
+
+
+###### 4、与浮点数相互转换
+>// FormatFloat 将浮点数 f 转换为字符串形式  
+// f：要转换的浮点数  
+// fmt：格式标记（b、e、E、f、g、G）  
+// prec：精度（数字部分的长度，不包括指数部分）  
+// bitSize：指定浮点类型（32:float32、64:float64），结果会据此进行舍入。  
+//  
+// 格式标记：  
+// 'b' (-ddddp±ddd，二进制指数)  
+// 'e' (-d.dddde±dd，十进制指数)  
+// 'E' (-d.ddddE±dd，十进制指数)  
+// 'f' (-ddd.dddd，没有指数)  
+// 'g' ('e':大指数，'f':其它情况)  
+// 'G' ('E':大指数，'f':其它情况)  
+//  
+// 如果格式标记为 'e'，'E'和'f'，则 prec 表示小数点后的数字位数  
+// 如果格式标记为 'g'，'G'，则 prec 表示总的数字位数（整数部分+小数部分）  
+// 参考格式化输入输出中的旗标和精度说明  
+func FormatFloat(f float64, fmt byte, prec, bitSize int) string  
+
+>// 将字符串解析为浮点数，使用 IEEE754 规范进行舍入。  
+// bigSize 取值有 32 和 64 两种，表示转换结果的精度。  
+// 如果有语法错误，则 err.Error = ErrSyntax  
+// 如果结果超出范围，则返回 ±Inf，err.Error = ErrRange  
+func ParseFloat(s string, bitSize int) (float64, error)  
+
+    func strconvFloat()  {
+        //浮点数转换成字符串
+        or := 0.123456789012345
+        fmt.Printf("Type is %T, value is %v\n", or, or)
+
+        rs := strconv.FormatFloat(or,'e',20, 64)
+        fmt.Printf("Type is %T, value is %v\n", rs, rs)
+
+
+        //字符串转换成浮点数
+        s := "0.12345678901234567890"
+
+        f, err := strconv.ParseFloat(s, 32)
+        fmt.Println(f, err)                // 0.12345679104328156
+        fmt.Println(float32(f), err)       // 0.12345679
+
+        f, err = strconv.ParseFloat(s, 64)
+        fmt.Println(f, err)                // 0.12345678901234568
+    }
+
+###### 5、将各种类型转换为字符串后追加到 dst 尾部
+
+>// 将各种类型转换为字符串后追加到 dst 尾部。  
+func AppendInt(dst []byte, i int64, base int) []byte  
+func AppendUint(dst []byte, i uint64, base int) []byte  
+func AppendFloat(dst []byte, f float64, fmt byte, prec, bitSize int) []byte  
+func AppendBool(dst []byte, b bool) []byte  
+
+    func strconvAppend()  {
+        var origin []byte = []byte("this is a string")
+        var a int64 = 1992
+        rs := strconv.AppendInt(origin,a,10)
+        fmt.Printf("Type is %T\n, value is %v\n, string is %s\n", rs, rs, rs)
+    }
+
+###### 6、特殊字符转换
+
+>// 判断字符串是否可以不被修改的表示为一个单行的反引号字符串。  
+// 字符串中不能含有控制字符（除了 \t）和“反引号”字符，否则返回 false  
+func CanBackquote(s string) bool  
+
+>// 判断 r 是否为可打印字符  
+// 可否打印并不是你想象的那样，比如空格可以打印，而\t则不能打印  
+func IsPrint(r rune) bool
+
+>// 判断 r 是否为 Unicode 定义的图形字符。  
+func IsGraphic(r rune) bool
+
+
+>// 将 s 转换为双引号字符串  
+func Quote(s string) string
+
+>// 功能同上，非 ASCII 字符和不可打印字符会被转义  
+func QuoteToASCII(s string) string
+
+>// 功能同上，非图形字符会被转义  
+func QuoteToGraphic(s string) string
+
+>// 将 r 转换为单引号字符  
+func QuoteRune(r rune) string
+
+>// 功能同上，非 ASCII 字符和不可打印字符会被转义  
+func QuoteRuneToASCII(r rune) string
+
+>// 功能同上，非图形字符会被转义  
+func QuoteRuneToGraphic(r rune) string
+
+>// 将 r 转换为单引号字符  
+func QuoteRune(r rune) string
+
+>// 功能同上，非 ASCII 字符和不可打印字符会被转义  
+func QuoteRuneToASCII(r rune) string
+
+>// 功能同上，非图形字符会被转义  
+func QuoteRuneToGraphic(r rune) string
+
+>// Unquote 将“带引号的字符串” s 转换为常规的字符串（不带引号和转义字符）  
+// s 可以是“单引号”、“双引号”或“反引号”引起来的字符串（包括引号本身）  
+// 如果 s 是单引号引起来的字符串，则返回该该字符串代表的字符  
+func Unquote(s string) (string, error)
+
+>// UnquoteChar 将带引号字符串（不包含首尾的引号）中的第一个字符“取消转义”并解码  
+//  
+// s    ：带引号字符串（不包含首尾的引号）  
+// quote：字符串使用的“引号符”（用于对字符串中的引号符“取消转义”）  
+//  
+// value    ：解码后的字符  
+// multibyte：value 是否为多字节字符  
+// tail     ：字符串 s 解码后的剩余部分  
+// error    ：返回 s 中是否存在语法错误  
+//  
+// 参数 quote 为“引号符”  
+// 如果设置为单引号，则 s 中允许出现 \'、" 字符，不允许出现单独的 ' 字符  
+// 如果设置为双引号，则 s 中允许出现 \"、' 字符，不允许出现单独的 " 字符  
+// 如果设置为 0，则不允许出现 \' 或 \" 字符，但可以出现单独的 ' 或 " 字符  
+func UnquoteChar(s string, quote byte) (value rune, multibyte bool, tail string, err error)  
+
 
 ### bytes
 
@@ -42,7 +238,6 @@ bytes包实现了操作[]byte的常用函数
 
 >type byte byte  
 8位无符号整型，是uint8的别名，二者视为同一类型。
-
 
 
 ###### 2、转换（大小写）
@@ -288,6 +483,32 @@ func Runes(s []byte) []rune
           return r
         }, b)
         println(string(c))
+    }
+
+###### 8、字节缓存
+
+>bytes.Buffer是一个实现了读写方法的可变大小的字节缓冲。本类型的零值是一个空的可用于读写的缓冲。
+
+    //字节缓存案列
+    func bytesBuffer()  {
+        rd := bytes.NewBufferString("Hello World!")
+        buf := make([]byte, 6)
+        // 获取数据切片
+        b := rd.Bytes()
+        // 读出一部分数据，看看切片有没有变化
+        rd.Read(buf)
+        fmt.Printf("%s\n", rd.String()) // World!
+        fmt.Printf("%s\n\n", b)         // Hello World!
+
+        // 写入一部分数据，看看切片有没有变化
+        rd.Write([]byte("abcdefg"))
+        fmt.Printf("%s\n", rd.String()) // World!abcdefg
+        fmt.Printf("%s\n\n", b)         // Hello World!
+
+        // 再读出一部分数据，看看切片有没有变化
+        rd.Read(buf)
+        fmt.Printf("%s\n", rd.String()) // abcdefg
+        fmt.Printf("%s\n", b)           // Hello World!
     }
 
 ### 单元测试
