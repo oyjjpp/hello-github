@@ -26,6 +26,226 @@
 
 #### strings
 
+###### 1、简介
+strings包实现了用于操作字符的简单函数。
+
+###### 2、比较
+
+
+>//比较两个字符串  相等返回0 大于返回1 小于 返回-1  
+func Compare(a, b string) int  
+//判断两个utf-8编码字符串（将unicode大写、小写、标题三种格式字符视为相同）是否相同。  
+>func EqualFold(s, t string) bool
+
+    func stringCompare()  {
+        a := "This is a strings"
+        b := "THis is a string"
+        if strings.EqualFold(a, b) {
+            fmt.Println("a equal b")
+        }
+
+        rs := strings.Compare(a, b)
+        fmt.Printf("result type %T, value %v\n", rs, rs)
+    }
+
+
+###### 3、转换
+
+>//大写、小写、Title格式转换  
+func ToUpper(s string) string  
+func ToLower(s string) string  
+func ToTitle(s string) string  
+
+>//根据特殊格式进行大写、小写、Title格式转换  
+func ToUpperSpecial(_case unicode.SpecialCase, s string) string  
+func ToLowerSpecial(_case unicode.SpecialCase, s string) string  
+func ToTitleSpecial(_case unicode.SpecialCase, s string) string  
+
+>//返回s中每个单词的首字母都改为标题格式的字符串拷贝。  
+**Title用于划分单词的规则不能很好的处理Unicode标点符号。**  
+func Title(s string) string
+
+    //大写、小写、Title转换
+    func stringUpperLower(){
+        //返回将所有字母都转为对应的小写版本的拷贝
+        fmt.Println(strings.ToLower("Gopher"))
+        //返回将所有字母都转为对应的大写版本的拷贝。
+        fmt.Println(strings.ToUpper("Gopher"))
+        //返回将所有字母都转为对应的标题版本的拷贝。
+        fmt.Println(strings.ToTitle("loud noises"))
+        fmt.Println(strings.ToTitle("хлеб"))
+        //返回s中每个单词的首字母都改为标题格式的字符串拷贝。
+        fmt.Println(strings.Title("her royal highness"))
+    }
+
+###### 4、清理
+
+>//返回将s前后端所有cutset包含的utf-8码值都去掉的字符串。  
+func Trim(s string, cutset string) string  
+func TrimLeft(s string, cutset string) string  
+func TrimRight(s string, cutset string) string
+
+>//返回将s前后端所有满足f的unicode码值都去掉的字符串。  
+func TrimFunc(s string, f func(rune) bool) string  
+func TrimLeftFunc(s string, f func(rune) bool) string  
+func TrimRightFunc(s string, f func(rune) bool) string
+
+>//返回将s前后端所有空白（unicode.IsSpace指定）都去掉的字符串。  
+func TrimSpace(s string) string  
+
+>//返回去除s可能的前缀prefix(后缀suffix)的字符串。  
+func TrimPrefix(s, prefix string) string  
+func TrimSuffix(s, suffix string) string  
+
+
+    func stringTrim()  {
+        origin := " !!! Achtung! Achtung! !!! "
+        cutset := "! "
+        //返回将s前后端所有cutset包含的utf-8码值都去掉的字符串。
+        fmt.Printf("[%q] \n", strings.Trim(origin, cutset))
+        fmt.Printf("[%q] \n", strings.TrimLeft(origin, cutset))
+        fmt.Printf("[%q] \n", strings.TrimRight(origin, cutset))
+
+        fmt.Println(strings.TrimSpace(" \t\n a lone gopher \n\t\r\n"))
+
+        var s = "Goodbye,, world!"
+        s = strings.TrimPrefix(s, "Goodbye,")
+        s = strings.TrimPrefix(s, "Howdy,")
+        fmt.Print("Hello" + s)
+    }
+
+###### 5、分割及拼接
+
+>//根据指定字符串进行切割 返回[]string类型切片  
+func Split(s, sep string) []string  
+func SplitN(s, sep string, n int) []string
+
+>//根据指定字符串进行切割，切割后含有切割字符，返回[]string类型切片  
+func SplitAfter(s, sep string) []string  
+func SplitAfterN(s, sep string, n int) []string
+
+>//返回将字符串按照空白（unicode.IsSpace确定，可以是一到多个连续的空白字符）分割的多个字符串。如果字符串全部是空白或者是空字符串的话，会返回空切片。  
+func Fields(s string) []string  
+func FieldsFunc(s string, f func(rune) bool) []string
+
+>//将一系列字符串连接为一个字符串，之间用sep来分隔。  
+func Join(a []string, sep string) string
+
+>//返回count个s串联的字符串。  
+func Repeat(s string, count int) string
+
+
+    //字符串的切割与连接
+    func stringSplit()  {
+        //根据指定字符串进行切割，返回[]string
+        fmt.Printf("%q\n", strings.Split("a,b,c", ","))
+        fmt.Printf("%q\n", strings.Split("a man a plan a canal panama", "a "))
+        fmt.Printf("%q\n", strings.Split(" xyz ", ""))
+        fmt.Printf("%q\n", strings.Split("", "Bernardo O'Higgins"))
+
+        //根据指定字符串进行切割，返回[]string 指定了返回的切片个数
+        fmt.Printf("%q\n", strings.SplitN("a,b,c", ",", 2))
+        z := strings.SplitN("a,b,c", ",", 0)
+        fmt.Printf("%q (nil = %v)\n", z, z == nil)
+
+        //切割都的字符串中含有切割字符
+        fmt.Printf("%q\n", strings.SplitAfter("a,b,c", ","))
+
+        //默认按空格切割字符串
+        fmt.Printf("Fields are: %q", strings.Fields("  foo bar  baz   "))
+
+        //将一个[]string类型切片连接起来
+        s := []string{"foo", "bar", "baz"}
+        fmt.Println(strings.Join(s, ", "))
+
+        fmt.Println("ba" + strings.Repeat("na", 2))
+    }
+
+
+###### 6、子串
+
+>判断s是否有前缀字符串prefix(后缀字符串suffix)。  
+func HasPrefix(s, prefix string) bool  
+func HasSuffix(s, suffix string) bool
+
+>判断字符串s是否包含（子串substr|utf-8码值r|字符串chars中的任一字符）。  
+func Contains(s, substr string) bool  
+func ContainsRune(s string, r rune) bool  
+func ContainsAny(s, chars string) bool
+
+>（子串sep|字符c|unicode码值r|字符串chars中的任一utf-8码值）在字符串s中第一次出现的位置，不存在则返回-1。  
+func Index(s, sep string) int  
+func IndexByte(s string, c byte) int  
+func IndexRune(s string, r rune) int  
+func IndexAny(s, chars string) int  
+func IndexFunc(s string, f func(rune) bool) int
+
+>（子串sep|字符c|unicode码值r|字符串chars中的任一utf-8码值）在字符串s中最后一次出现的位置，不存在则返回-1。  
+func LastIndex(s, sep string) int  
+func LastIndexByte(s string, c byte) int  
+func LastIndexAny(s, chars string) int  
+func LastIndexFunc(s string, f func(rune) bool) int
+
+>返回字符串s中有几个不重复的sep子串。  
+func Count(s, sep string) int
+
+    func stringSubstring()  {
+    	a := "this is a string"
+    	//前缀
+    	if strings.HasPrefix(a, "this") {
+    		fmt.Println("a has prefix 'this'")
+    	}
+
+    	//后缀
+    	if strings.HasSuffix(a, "string"){
+    		fmt.Println("a has suffix 'string'")
+    	}
+
+    	//包含子串
+    	if strings.Contains(a, "is"){
+    		fmt.Println("a contains 'is'")
+    	}
+
+    	//包含utf-8码值r
+    	if strings.ContainsRune(a,'a'){
+    		fmt.Println("a contains 'a'")
+    	}
+
+    	//包含字符串chars中的任一字符
+    	if strings.ContainsAny(a, "pre"){
+    		fmt.Println("a contains any string")
+    	}
+
+    	fmt.Println(strings.Count("cheese", "e"))
+    	fmt.Println(strings.Count("five", "")) // before & after each rune
+    }
+
+
+###### 7、替换
+
+>返回将s中前n个不重叠old子串都替换为new的新字符串，如果n<0会替换所有old子串。  
+func Replace(s, old, new string, n int) string
+
+>将s的每一个unicode码值r都替换为mapping(r)，返回这些新码值组成的字符串拷贝。如果mapping返回一个负值，将会丢弃该码值而不会被替换  
+func Map(mapping func(rune) rune, s string) string
+
+
+    func stringReplace()  {
+        fmt.Println(strings.Replace("oink oink oink", "k", "ky", 2))
+        fmt.Println(strings.Replace("oink oink oink", "oink", "moo", -1))
+
+        rs := func(r rune) rune {
+            switch {
+            case r >= 'A' && r <= 'Z':
+                return 'A' + (r-'A'+13)%26
+            case r >= 'a' && r <= 'z':
+                return 'a' + (r-'a'+13)%26
+            }
+            return r
+        }
+        fmt.Println(strings.Map(rs, "'Twas brillig and the slithy gopher..."))
+    }
+
 #### strconv
 
 ###### 1、简介
