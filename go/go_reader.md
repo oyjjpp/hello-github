@@ -2,6 +2,13 @@
 ## 环境安装
 - [下载包](https://www.golangtc.com/download)
 
+## 问题
+ - 切片、数组差别
+ - 指针、引用
+ - 字符串 byte长度 定义
+ - 执行流程
+
+
 ## 流行框架
 - [beego](https://beego.me/)
 - [Buffalo](https://github.com/gobuffalo/buffalo)
@@ -17,6 +24,7 @@
 - [雨痕 go学习笔记](https://github.com/qyuhen/book)
 - [Go 入门指南-github](https://github.com/Unknwon/the-way-to-go_ZH_CN)
 - [Go 入门指南-kancloud](https://www.kancloud.cn/kancloud/the-way-to-go/72432)
+
 
 ## 常见包
 
