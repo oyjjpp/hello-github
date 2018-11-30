@@ -9,12 +9,29 @@ UNIX及UNIX-like下的调试工具
  - 你可以改变你的程序，将一个BUG产生的影响修正从而测试其他BUG。  
 
 
+### 基础功能
+
+###### 调试命令
+
+>b  
+添加断点
+
+b 函数名 在某函数入口处添加断点；  
+b 行号 在指定行添加断点  
+b 文件名：行号 在指定文件的指定行添加断点   
+b 行号 if 条件 当条件为真时，指定行号处断点生效，例 b 5 if i=10 ，当i=10时，第5行断点生效
+
+>info break  
+查看当前断点信息
+
+>list  
+查看源码
 
 
 
 ### 问题
 
-###### Missing separate debuginfos
+  ###### Missing separate debuginfos
 
     Missing separate debuginfos, use: debuginfo-install cyrus-sasl-lib-2.1.26-21.el7.x86_64 freetype-2.4.11-15.el7.x86_64 glibc-2.17-196.el7.x86_64 keyutils-libs-1.5.8-3.el7.x86_64 krb5-libs-1.15.1-8.el7.x86_64 libcom_err-1.42.9-10.el7.x86_64 libcurl-7.29.0-42.el7_4.1.x86_64 libgcrypt-1.5.3-14.el7.x86_64 libgpg-error-1.12-3.el7.x86_64 libidn-1.28-4.el7.x86_64 libpng-1.5.13-7.el7_2.x86_64 libselinux-2.5-12.el7.x86_64 libssh2-1.4.3-10.el7_2.1.x86_64 libxml2-2.9.1-6.el7_2.3.x86_64 libxslt-1.1.28-5.el7.x86_64 nspr-4.13.1-1.0.el7_3.x86_64 nss-3.28.4-12.el7_4.x86_64 nss-softokn-freebl-3.28.3-8.el7_4.x86_64 nss-util-3.28.4-3.el7.x86_64 openldap-2.4.44-5.el7.x86_64 openssl-libs-1.0.2k-8.el7.x86_64 pcre-8.32-17.el7.x86_64 xz-libs-5.2.2-1.el7.x86_64 zlib-1.2.7-17.el7.x86_64
 
