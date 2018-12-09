@@ -42,7 +42,12 @@
 #### database/sql
 #### database/sql/driver
 
+### 编码相关
+
+#### json
+
 ### 字符串相关
+
 
 #### fmt
 
@@ -102,6 +107,61 @@ func Fprintf(w io.Writer, format string, a ...interface{}) (n int, err error)
         buf.Flush()
     }
 
+###### 5、自定义输出格式
+
+    func fmtCustom()  {
+        u := User("Hello gopher")
+        fmt.Printf("%-+ 0#8.5m\n", u)
+        fmt.Printf("%+ 0#8.5M\n", u)
+        fmt.Println(u)
+        fmt.Printf("%s\n", u)
+        fmt.Printf("%#v\n", u)
+        fmt.Printf("%d\n", u)
+    }
+
+    type User string
+
+    func (us User) String() string {
+        return strings.ToUpper(string(us))
+    }
+
+    func (us User) GoString() string {
+        return `"` + strings.ToUpper(string(us)) + `"`
+    }
+
+    func (us User) Format(f fmt.State, c rune)  {
+        write := func(s string) {
+            f.Write([]byte(s))
+        }
+
+        switch c {
+        case 'm', 'M':
+            write("旗标：[")
+            for s := "+- 0#"; len(s) > 0; s = s[1:] {
+                if f.Flag(int(s[0])) {
+                    write(s[1:])
+                }
+            }
+            write("]")
+
+            if v, ok := f.Width(); ok{
+                write(" | 宽度：" + strconv.FormatInt(int64(v), 10))
+            }
+
+            if v, ok := f.Precision(); ok{
+                write(" | 精度：" + strconv.FormatInt(int64(v),10))
+
+            }
+        case 's','v':
+            if c =='v' && f.Flag('#') {
+                write(us.GoString())
+            }else {
+                write(us.String())
+            }
+        default:
+            write("无效格式：" + string(c))
+        }
+    }
 
 #### strings
 

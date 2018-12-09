@@ -1,6 +1,6 @@
 ### window本地docker开发环境搭建（hyper-v）
 
->支持hyper-v的系统
+支持hyper-v的系统
 
 ###### 开启BIOS的虚拟化
 >重启电脑进入BIOS模式（不同电脑进入不一样ThinkPad F1, HP esc+F10）  
@@ -25,3 +25,9 @@
 ###### docker安装
 
 ###### 应用环境搭建
+
+
+### window本地docker开发环境搭建（DockerToolbox）
+
+###### 参考
+ - [DockerToolbox在Win7上的安装和设置](https://www.cnblogs.com/canger/p/9028723.html)
