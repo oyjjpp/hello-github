@@ -11,7 +11,12 @@
 
 #### 问题
 什么是错误？什么是异常？  
+>异常：程序在运行中出现不符合预期的情况  
+错误：PHP中将代码自身异常（一般是环境或者语法非法所致）成为错误
+
 try catch 能捕获的是什么？  
+>php7 之前只能捕获Exception  
+php7之后可以通过Throwable捕获Exception和部分Error
 
 #### 错误级别
 
@@ -76,36 +81,130 @@ set_error_handler(array('class_name', 'function_name'));
 *注意*
 >使用该函数后就不能使用error_reporting()设置错误level  
 如果函数返回 FALSE，标准错误处理处理程序将会继续调用  
+E_ERROR、 E_PARSE、 E_CORE_ERROR、 E_CORE_WARNING、 E_COMPILE_ERROR、 E_COMPILE_WARNING，和在 调用 set_error_handler() 函数所在文件中产生的大多数 E_STRICT不能进行处理  
+
 
 ###### 5、set_exception_handler()
 设置运行期间自定义异常处理函数，用于捕获没有被try/catch捕获的异常  
 set_exception_handler ( callable $exception_handler )  
 
-###### trigger_error()
+###### 6、trigger_error()
 产生一个用户级别的error/warning/notice信息  
 trigger_error ( string $error_msg [, int $error_type = E_USER_NOTICE ] )
 
 *使用*
 >trigger_error("Cannot divide by zero", E_USER_ERROR);
 
-#### 异常与错误
+
+###### 7、error_get_last()
+获取最后发生的错误  
+array error_get_last ( void )
 
 
+#### 案例
 
-#### Throwable、Exception、Error的关系
+ - 无捕获状态  
+>echo $errInfo['err'];  
+Notice: Undefined variable: errInfo in /www/test.php on line 12
 
-#### PHP如何捕获异常
+ - 自定义捕获异常函数
+>//自定义捕获异常函数  
+ function errorHandler($errNo, $errStr, $errFile, $errLine){  
+ 	 echo "错误的级别：{$errNo}<br\>";  
+ 	echo "错误的信息{$errStr}<br\>";  
+ 	echo "错误的文件名{$errFile}<br\>";  
+ 	echo "错误发生的行号{$errLine}<br\>";  
+ }  
+ >  
+ //注册自定义捕获异常函数  
+ set_error_handler('errorHandler');  
+ >   
+ //调用  
+ //notice  
+ echo $errInfo['err'];  
+ >  
+ //用户自定义错误  
+ trigger_error('认为触发', E_USER_ERROR);  
+ >  
+ //致命错误  
+ handlerErr();  
+ >  
+ //output  
+ 错误的级别：8  
+ 错误的信息Undefined variable: errInfo  
+ 错误的文件名/www/test.php  
+ 错误发生的行号11
+ 错误的级别：256  
+ 错误的信息认为触发  
+ 错误的文件名/www/test.php  
+ 错误发生的行号15   
+  Fatal error: Uncaught Error: Call to undefined function handlerErr() in /www/test.php on line   
+
+ - php7捕获Error
+
+ >//自定义异常错里方法  
+ function errorHandler($errNo, $errStr, $errFile, $errLine){  
+ 	echo "错误的级别：{$errNo}<br\>";  
+ 	echo "错误的信息：{$errStr}<br\>";  
+ 	echo "错误的文件名：{$errFile}<br\>";  
+ 	echo "错误发生的行号：{$errLine}<br\>";  
+ }  
+ >  
+ //注册异常捕获函数  
+ set_error_handler('errorHandler');  
+ >  
+ try{  
+ 	//Notice  
+ 	echo $errInfo['err'];    
+ >  
+ 	//用户自定义错误  
+ 	trigger_error('认为触发', E_USER_ERROR);  
+ >    
+ 	//Error级别错误  
+ 	handlerErr();  
+ }catch(Error $e){  
+ 	echo "错误的级别：{$e->getCode()}<br\>";  
+ 	echo "错误的信息：{$e->getMessage()}<br\>";  
+ 	echo "错误的文件名：{$e->getFile()}<br\>";  
+ 	echo "错误发生的行号：{$e->getLine()}<br\>";  
+ }
+ >  
+ >//output  
+ 错误的级别：8  
+ 错误的信息：Undefined variable: errInfo  
+ 错误的文件名：/www/test.php  
+ 错误发生的行号：15  
+ 错误的级别：256  
+ 错误的信息：认为触发  
+ 错误的文件名：/www/test.php  
+ 错误发生的行号：18  
+ 错误的级别：0  
+ 错误的信息：Call to undefined function handlerErr()  
+ 错误的文件名：/www/test.php  
+ 错误发生的行号：21  
+
+
+#### PHP7中Throwable、Exception、Error的关系
+
+    Throwable  
+      Error  
+        ArithmeticError  
+        DivisionByZeroError  
+        AssertionError  
+        ParseError  
+        TypeError  
+      Exception  
+      ...
+
+
+#### PHP异常、错误捕获流程
 
 >try{}catch(){}  
 异常捕获步骤  
 1、被匹配的try catch 结构捕获  
-2、调用异常处理函数  set_exception_handler().  register_shutdown_function  set_error_handler  
+2、调用异常处理函数  set_exception_handler()|set_error_handler|register_shutdown_function,error_get_last    
 3、被报告为一个致命错误(Fatal Error)  
 
-#### 注意
-
-抛出的异常必须为Exception类或者Exception的子类  
-错误不能被try catch捕获
 
 #### 参考  
 
