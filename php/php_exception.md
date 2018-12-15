@@ -88,6 +88,38 @@ E_ERROR、 E_PARSE、 E_CORE_ERROR、 E_CORE_WARNING、 E_COMPILE_ERROR、 E_COM
 设置运行期间自定义异常处理函数，用于捕获没有被try/catch捕获的异常  
 set_exception_handler ( callable $exception_handler )  
 
+**调用多次后如何处理？**  
+覆盖式注册自定义异常捕获函数
+
+    function exception_handler_1(BadMethodCallException  $e){
+    	echo '[' . __FUNCTION__ . '] ' . $e->getMessage();
+    }
+
+    function exception_handler_2(BadFunctionCallException  $e){
+    	echo '[' . __FUNCTION__ . '] ' . $e->getMessage();
+    }
+
+    function exception_handler_3(LogicException  $e){
+    	echo '[' . __FUNCTION__ . '] ' . $e->getMessage();
+    }
+
+    function exception_handler_4(ErrorException $e){
+    	echo '[' . __FUNCTION__ . '] ' . $e->getMessage();
+    }
+
+    set_exception_handler('exception_handler_4');
+    set_exception_handler('exception_handler_3');
+    set_exception_handler('exception_handler_2');
+    set_exception_handler('exception_handler_1');
+
+
+    //restore_exception_handler();
+    throw new ErrorException('This triggers the first exception handler...');
+
+    //output
+    Fatal error: Uncaught TypeError: Argument 1 passed to exception_handler_1() must be an instance of BadMethodCallException, instance of ErrorException
+
+
 ###### 6、trigger_error()
 产生一个用户级别的error/warning/notice信息  
 trigger_error ( string $error_msg [, int $error_type = E_USER_NOTICE ] )
@@ -100,6 +132,64 @@ trigger_error ( string $error_msg [, int $error_type = E_USER_NOTICE ] )
 获取最后发生的错误  
 array error_get_last ( void )
 
+
+#### PHP7中Throwable、Exception、Error的关系
+
+    Throwable  
+      Error  
+        ArithmeticError  
+        DivisionByZeroError  
+        AssertionError  
+        ParseError  
+        TypeError  
+      Exception  
+      ...
+
+
+#### PHP异常、错误捕获流程
+
+>try{}catch(){}  
+异常捕获步骤  
+1、被匹配的try catch 结构捕获  
+2、调用异常处理函数  set_exception_handler()|set_error_handler|register_shutdown_function,error_get_last    
+3、被报告为一个致命错误(Fatal Error)  
+
+
+
+#### 优雅的处理PHP异常及错误准则
+ - 准则  
+>一定要让PHP报告错误  
+在开发环境中要显示错误  
+在生产环境中不能显示错误  
+在开发环境和生产环境中都要记录错误  
+
+ - DEV环境  
+>;显示错误  
+display_startup_errors = On  
+display_errors = On  
+;报告所有错误  
+error_reporting = -1  
+; 记录错误  
+log_errors = On  
+error_log = /data/logs/php/error.log
+
+ - PRO环境  
+>;不显示错误  
+display_startup_errors = Off  
+display_errors = Off  
+;除了注意事项外，报告所有错误  
+error_reporting = E_ALL & ~E_NOTICE  
+; 记录错误  
+log_errors = On  
+error_log = /data/logs/php/error.log
+
+
+#### 异常与错误处理组件
+Whoops  
+Monolog  
+
+
+#### 成熟框架中如何处理异常和错误的？
 
 #### 案例
 
@@ -183,27 +273,6 @@ Notice: Undefined variable: errInfo in /www/test.php on line 12
  错误的文件名：/www/test.php  
  错误发生的行号：21  
 
-
-#### PHP7中Throwable、Exception、Error的关系
-
-    Throwable  
-      Error  
-        ArithmeticError  
-        DivisionByZeroError  
-        AssertionError  
-        ParseError  
-        TypeError  
-      Exception  
-      ...
-
-
-#### PHP异常、错误捕获流程
-
->try{}catch(){}  
-异常捕获步骤  
-1、被匹配的try catch 结构捕获  
-2、调用异常处理函数  set_exception_handler()|set_error_handler|register_shutdown_function,error_get_last    
-3、被报告为一个致命错误(Fatal Error)  
 
 
 #### 参考  
