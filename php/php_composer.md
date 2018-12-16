@@ -68,14 +68,39 @@ php composer.phar search monolog
 php composer.phar show
 //展示可用的包
 php composer.phar show monolog/monolog
-//展示指定包的信息
+//展示指定包的信息  
+php composer show --platform  
+//平台软件包的列表
 
-#### 适配不同的环境
+##### 7、self-update
+php composer.phar slef-update  
+对composer自身升级
 
-#### 平台软件包
-将那些已经安装在系统上，但并不是由 Composer 安装的包视为一个虚拟的平台软件包。这包括PHP本身，PHP扩展和一些系统库。  
-使用 composer show --platform 命令来获取可用的平台软件包的列表。
+##### 8、config
+php composer.phat config key value  
+可以对composer.json文件进行编辑，针对指定key编辑对应value    
+php composer.phat config --list  
+展示当前配置的选项列表
+
+##### 9、dump-autoload
+php composer.phat dump-autoload  
+更新 autoloader
+
+##### 10、licenses
+php composer.phat licenses  
+列出已安装的每个包的名称、版本、许可协议
+
+##### 11、环境变量
+###### COMPOSER
+COMPOSER  可以为 composer.json 文件指定其它的文件名（适应不同的环境开发）  
+COMPOSER=composer-pro.json composer install  
+
+###### COMPOSER_ROOT_VERSION
+COMPOSER_ROOT_VERSION  指定 root 包的版本
+
+###### COMPOSER_VENDOR_DIR
+COMPOSER_VENDOR_DIR 指定 composer 将依赖安装在 vendor 以外的其它目录中  
+与config下的vendor-dir作用一致
 
 #### 参考
- - [标签]()
- - [分支]()
+ - [Composer文档](https://docs.phpcomposer.com/)
