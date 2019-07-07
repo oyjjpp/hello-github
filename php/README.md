@@ -18,7 +18,7 @@
 - [composer](./php_composer.md)
 
 #### debug工具
-- [gdb——未完待续]()
+- [gdb——未完待续](../linux/gdb.md)
 - [xdebug——未完待续]()
 - [Pinba——未完待续]()
 - [Kint——未完待续]()

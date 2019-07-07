@@ -12,6 +12,8 @@
 - [扩展开发say](./php_extend_say.md)
 - [sapi](./php_sapi.md)
 
+- [phpdbg——]()
+- [vld——]()
 #### 内核
 
 #### 包管理工具
