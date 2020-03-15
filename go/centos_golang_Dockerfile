@@ -1,0 +1,164 @@
+# Version: 0.0.1
+FROM centos:latest
+MAINTAINER xiehuanang "xiehuanang@boyosoft.net"
+# RUN yum install -y wget
+#================================================================
+# 创建构建或初始化容器时的若干中文件
+RUN mkdir /dockerdata
+WORKDIR /dockerdata
+ADD go1.12.3.linux-amd64.tar.gz /dockerdata
+# 升级到centos-7
+# COPY CentOS6-Base-163.repo /dockerdata/CentOS-Base.repo
+# COPY geekery.repo /dockerdata/geekery.repo
+# RUN mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup &&  \
+#       cp /dockerdata/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo   &&  \
+#       cp /dockerdata/geekery.repo /etc/yum.repos.d/geekery.repo
+RUN yum clean all &&    \
+        yum makecache   &&  \
+        yum -y update   &&  \
+        yum install -y gcc git
+# RUN yum install -y curl   &&  \
+
+#   yum install -y readline-devel   &&  \
+#   yum install -y libXt-devel  &&  \
+#   yum install -y make
+# screen ftp
+# RUN yum install -y gcc-gfortran
+
+# gcc-c++
+# RUN yum install -y readline-devel
+# RUN yum install -y libXt-devel
+# RUN yum install -y make
+# git
+
+#================================================================
+
+# RUN yum install -y vixie-cron
+# RUN yum install -y crontabs
+# RUN chkconfig --level 35 crond on
+# RUN yum install -y bzip2recover
+# RUN yum install -y bzip2
+
+# install R packages
+# RUN yum install -y epel-release
+# RUN yum install -y R
+#================================================================
+# RUN yum install -y mysql-community-server
+# RUN yum install tomcat6 tomcat6-webapps tomcat6-admin-webapps
+#================================================================
+# RUN yum install -y redis-server
+# RUN yum install -y redis-tools
+#================================================================RUN eval "TZ='Asia/Shanghai'; export TZ"
+RUN echo "export TZ=\"Asia/Shanghai\"" >> /root/.bashrc &&  \
+    echo "export TS=\"`date -d today +"%-Y%-m%-d%k%M%S"`\"" >> /root/.bashrc    &&  \
+    echo "export VERSION=\"`date -d today +"v2.4.0.%-Y%-m%-d%-k%M%S"`\"" >> /root/.bashrc   &&  \
+    ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+#@todo: 争取把跨平台编译的脚本保存在Docker容器中
+# RUN echo `for GOOS in windows;do for GOARCH in 386 amd64; do go build -v -ldflags "-s -w -X main._VERSION_="$VERSION  -o BillProcess-$GOOS-$GOARCH-v$TS.exe; done; done`
+
+# RUN rm /etc/localtime3
+
+#================================================================
+# 此处纯粹是为配合腾讯的习惯，腾讯虚拟服务器的工作卷名字叫data
+# RUN export http_proxy="10.251.233.145:8888"
+# RUN export https_prxy="10.251.233.145:8888"
+ENV LANG en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
+
+#================================================================
+
+#================================================================
+
+RUN echo "47.92.84.245\tboyosoft" >> /dockerdata/ex_hosts &&  \
+        echo "47.92.84.245\tboyosoft.net" >> /dockerdata/ex_hosts &&  \
+        echo "47.92.84.245\twww.boyosoft.net" >> /dockerdata/ex_hosts &&  \
+        touch /dockerdata/update_hosts  &&  \
+        echo "cat /dockerdata/ex_hosts >> /etc/hosts" >> /dockerdata/update_hosts &&  \
+        echo "/etc/init.d/netfs restart" >> /dockerdata/update_hosts    &&  \
+        chmod 700 /dockerdata/update_hosts  &&  \
+        rm -rf /dockerdata/ex_hosts &&  \
+        rm -rf /usr/lib/golang  &&  \
+    cp -rf /dockerdata/go /usr/lib/golang   &&  \
+        rm -rf /dockerdata/go  &&  \
+    mkdir -p /root/.ssh &&  \
+    chmod 700 /root/.ssh
+
+ENV GO15VENDOREXPERIMENT 1
+ENV GO111MODULE on
+ENV GOROOT /usr/lib/golang
+ENV GOPATH /data/boyosoft/goBillProcess
+# ENV DPPATH $GOPATH/src/vendor/github.com/cpfc/dp
+ENV PATH $GOPATH/bin:$GOROOT/bin:$PATH
+
+#================================================================
+# ADD getlatest.sh /dockerdata/getlatest.sh
+
+RUN mkdir -p /root/.ssh
+COPY authorized_keys /root/.ssh/authorized_keys
+COPY id_rsa_github /root/.ssh/id_rsa_github
+# COPY id_rsa_bigdata_prod /root/.ssh/id_rsa_bigdata_prod
+COPY config /root/.ssh/config
+COPY known_hosts /root/.ssh/known_hosts
+RUN cd /root/.ssh   &&  \
+    chmod 400 *    &&  \
+    cd ..   &&  \
+    chmod 700 .ssh
+
+# RUN git clone git@git.18.tl:xiehuanang/processtest.git gittest
+# RUN git clone http://xiehuanang:Pocketbbs@www.taolch.com:10080/git/goBillProcess.git
+
+# RUN chmod 700 /dockerdata/getlatest.sh
+#RUN echo "#!/bin/sh" >> /dockerdata/build-$APPNAME.sh; \
+#    echo "cd $APPAPIPATH" >> /dockerdata/build-$APPNAME.sh; \
+#    echo "go build -o $APPNAME main.go" >> /dockerdata/build-$APPNAME.sh; \
+#   echo "scp $APPNAME 192.168.200.244:~/$APPNAME" >> /dockerdata/build-$APPNAME.sh; \
+#    chmod 700 /dockerdata/build-$APPNAME.sh
+
+# RUN echo "#!/bin/sh" >> /dockerdata/build-$APPNAME.sh; \
+#       echo "cd $APPAPIPATH" >> /dockerdata/build-$APPNAME.sh; \
+#       echo "go build -o $APPNAME $APPNAME.go" >> /dockerdata/build-$APPNAME.sh; \
+#       echo "scp $APPNAME 10.104.19.122:~/data/boyosoft/$APPNAME" >> /dockerdata/build-$APPNAME.sh; \
+#       chmod 700 /dockerdata/build-$APPNAME.sh
+
+# RUN git config --global user.email "xiehuanang@boyosoft.net"
+# RUN git config --global user.name "xiehuanang"
+# RUN git config --global push.default matching
+RUN git config --global user.name "devuser"
+RUN git config --global user.email "pythoner@icloud.com"
+
+###############################################################################
+# 初始化root用户的环境变量
+RUN echo "export GOPATH=$GOPATH" >> /root/.bashrc   &&  \
+    echo "export GOROOT=$GOROOT" >> /root/.bashrc   &&  \
+    echo "export GO15VENDOREXPERIMENT=$GO15VENDOREXPERIMENT" >> /root/.bashrc   &&  \
+    echo "export GO111MODULE=$GO111MODULE" >> /root/.bashrc &&  \
+    echo "export JDALPHASERVERPATH=$GOPATH/src/github.com/boyosoft/jdalphaserver" >> /root/.bashrc  &&  \
+    echo "export PATH=$PATH" >> /root/.bashrc   &&  \
+    cat /root/.bashrc   &&  \
+    rm -rf /var/cache/yum
+# RUN source /root/.profile
+# RUN touch /usr/local/bin/q &&  \
+#     chmod +x /usr/local/bin/q  &&  \
+#     echo "#!/bin/bash" >> /usr/local/bin/q    &&  \
+#     echo "cd $JDALPHASERVERPATH" >> /usr/local/bin/q  &&  \
+#     echo "rm -rf jdalphaserver" >> /usr/local/bin/q   &&  \
+#     echo "go build" >> /usr/local/bin/q    &&  \
+#     echo "chmod +x jdalphaserver" >> /usr/local/bin/q && \
+#     # echo "./jdalphaserver -syncdb" >> /usr/local/bin/q    &&  \
+#     echo "./jdalphaserver" >> /usr/local/bin/q
+###############################################################################
+
+#RUN mkdir -p /dockerdata/www/html/static
+# RUN git commit -a -m "update when compile the dockerfile"
+# RUN git push
+# goBillProcess内嵌的Web服务器占用的端口号
+WORKDIR $GOPATH/src
+VOLUME ["/data/boyosoft"]
+EXPOSE 8080 8081 3000 3001 9000 9001 9090
+
+# export VERSION=`date -d today +"v2.4.0.%-Y%-m%-d%-k%M%S"`
+# export TS=`date -d today +"%-Y%-m%-d%k%M%S"`
+# for GOOS in windows;do for GOARCH in 386 amd64; do go build -v -ldflags "-s -w -X main._VERSION_="$VERSION  -o BillProcess-$GOOS-$GOARCH-v$TS.exe; done; done
+
+# ENTRYPOINT ["/root/config_crond.sh"]
+# CMD ["/dockerdata/build-$APPNAME.sh"]

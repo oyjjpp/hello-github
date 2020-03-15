@@ -1,7 +1,7 @@
 #https://www.jianshu.com/p/291d9cb8c1f7
 FROM alpine:latest
 
-MAINTAINER oyj<ouyangjun92@qq.com>
+LABEL "maintainer"="ouyangjun92@qq.com"
 
 RUN apk add --no-cache \
         ca-certificates
@@ -34,7 +34,9 @@ RUN set -eux; \
         x86) export GO386='387' ;; \
     esac; \
     \
-    wget -O go.tgz "https://golang.org/dl/go$GOLANG_VERSION.src.tar.gz"; \
+    #https://studygolang.com/dl/golang/go1.12.5.linux-amd64.tar.gz
+    wget -O go.tgz "https://studygolang.com/dl/golang/go$GOLANG_VERSION.src.tar.gz"; \
+    #wget -O go.tgz "https://golang.org/dl/go$GOLANG_VERSION.src.tar.gz"; \
     # echo 'bc1ef02bb1668835db1390a2e478dcbccb5dd16911691af9d75184bbe5aa943e *go.tgz' | sha256sum -c -; \
     tar -C /usr/local -xzf go.tgz; \
     rm go.tgz; \
@@ -56,7 +58,9 @@ RUN set -eux; \
 ENV GO15VENDOREXPERIMENT 1
 ENV GO111MODULE on
 ENV GOROOT /usr/local/go
-ENV GOPATH /data/boyosoft/goBillProcess
+
+#go的源码目录
+ENV GOPATH /data/www/go
 # ENV DPPATH $GOPATH/src/vendor/github.com/cpfc/dp
 ENV PATH $GOPATH/bin:$GOROOT/bin:$PATH
 
@@ -75,9 +79,9 @@ RUN cd /root/.ssh; \
     chmod 400  *; \
     cd ..;  \
     chmod 700 .ssh; \
-    git config --global user.name "devuser";    \
-    git config --global user.email "pythoner@icloud.com"
+    git config --global user.name "oyjjpp";    \
+    git config --global user.email "ouyangjun92@qq.com"
 #
 WORKDIR $GOPATH/src
-VOLUME ["/data/boyosoft"]
-EXPOSE 8080 8081 3000 3001 9000 9001 9090
+VOLUME ["/data/www"]
+EXPOSE 8080 80002
