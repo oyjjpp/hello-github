@@ -340,6 +340,14 @@ length记录整数集合的元素数量，即contents数组的长度
 >压缩列表可以包含多个节点，每个节点可以保存一个字节数组或者整数值。  
 >添加新节点到压缩列表，或者从压缩列表中删除节点，可能会引发连锁更新操作，但这种操作出现的几率并不高。
 
+## 数据类型和底层数据结构的对应关系
+
+![image](./redis-type-struct.jpg)
+
+## 底层数据结构操作的时间复杂度
+
+![image](./redis_run_time.jpg)
+
 ## 参考
 
 [Redis的底层数据结构](https://www.cnblogs.com/MouseDong/p/11133941.html)  
