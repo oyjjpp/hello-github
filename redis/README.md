@@ -123,4 +123,8 @@ redis的多线程主要是针对IO写度进行了多线程，来提供redisIO的
 
 [AOF和RDB](./backups.md)
 
+## 集群
+
+[主从库](./master_slave.md)
+
 [redis中文社区文档](http://www.redis.cn/documentation.html)
