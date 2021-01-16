@@ -16,7 +16,7 @@ struct sdshdr {
 }
 ```
 
-![image](./redis_string.png)
+![image](./image/redis_string.png)
 
 ### C字符串和SDS之间的区别
 
@@ -31,6 +31,10 @@ struct sdshdr {
 ### 字符串总结
 
 Redis只会使用C字符串作为字面量，在大多数情况下，Redis使用SDS（Simple Dynamic String，简单动态字符串）作为字符串表示。
+
+### 缺点
+
+它有一个明显的短板，就是它保存数据时所消耗的内存空间较多。
 
 ## 二、链表
 
@@ -70,7 +74,7 @@ typedof struct list{
 }list;
 ```
 
-![image](./redis_list_node.png)
+![image](./image/redis_list_node.png)
 
 ### redis链表实现的特性
 
@@ -108,7 +112,7 @@ typedef struct dictht {
 } dictht;
 ```
 
-![image](./redis_map.png)
+![image](./image/redis_map.png)
 图中是一个大小为4的空哈希表  
 table是一个数组，数组元素是dictEntry结构的指针，每个dictEntry保存一个键值对  
 size 记录哈希表的大小  
@@ -133,7 +137,7 @@ typedef struct dictEntry {
 } dictEntry;
 ```
 
-![image](./redis_map_node.png)
+![image](./image/redis_map_node.png)
 
 ### 字典结构
 
@@ -147,7 +151,7 @@ typedef struct dict {
     dictht ht[2];
     // rehash索引
     //当rehash不在进行时，值为-1
-    in trehashidx; /* rehashing not in progress if rehashidx == -1 */
+    int rehashidx; /* rehashing not in progress if rehashidx == -1 */
 } dict;
 
 typedef struct dictType {
@@ -166,7 +170,7 @@ typedef struct dictType {
 } dictType;
 ```
 
-![image](./redis_dict.png)
+![image](./image/redis_dict.png)
 
 ### 函数
 
@@ -254,7 +258,7 @@ typedef struct zskiplist {
 } zskiplist;
 ```
 
-![image](./zskiplist.png)
+![image](./image/zskiplist.png)
 
 上图展示了一个跳跃表示例，位于图片最左边的是zskiplist结构，该结构包含以下属性：  
 header：指向跳跃表的表头节点。  
@@ -342,11 +346,11 @@ length记录整数集合的元素数量，即contents数组的长度
 
 ## 数据类型和底层数据结构的对应关系
 
-![image](./redis-type-struct.jpg)
+![image](./image/redis-type-struct.jpg)
 
 ## 底层数据结构操作的时间复杂度
 
-![image](./redis_run_time.jpg)
+![image](./image/redis_run_time.jpg)
 
 ## 参考
 

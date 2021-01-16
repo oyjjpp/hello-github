@@ -4,7 +4,7 @@
 
 ### AOF操作过程
 
-![image](./redis_aof_handle.jpg)
+![image](./image/redis_aof_handle.jpg)
 
 ### AOF写入流程
 
@@ -45,7 +45,7 @@ AOF重写机制就是在重写时，Redis根据数据库的现状创建一个新
 ### 重写时如何保证新增的操作日志不会丢失？
 
 每次AOF重写时，Redis会先执行一个内存拷贝，用于重写；然后，使用两个日志保证在重写过程中，新写入的数据不会丢失。而且，因为 Redis 采用额外的线程进行数据重写，所以，这个过程并不会阻塞主线程。
-![image](./redis_aof_bgrewriteaof.jpg)
+![image](./image/redis_aof_bgrewriteaof.jpg)
 
 ### AOF 日志重写的时候，是由 bgrewriteaof子进程来完成的，不用主线程参与，我们今天说的非阻塞也是指子进程的执行不阻塞主线程。但是你觉得，这个重写过程有没有其他潜在的阻塞风险呢？如果有的话，会在哪里阻塞？
 
@@ -66,7 +66,15 @@ AOF重写机制就是在重写时，Redis根据数据库的现状创建一个新
 ### 生成快照的命令
 
 save：在主线程中执行，会导致阻塞；  
-bgsave：创建一个子进程，专门用于写入 RDB 文件，避免了主线程的阻塞，这也是 Redis RDB 文件生成的默认配置。
+bgsave：创建一个子进程，专门用于写入RDB文件，避免了主线程的阻塞，这也是Redis RDB文件生成的默认配置。
+
+### 运行时机？
+
+```redis
+save 900 1
+save 300 10
+save 60 10000
+```
 
 ### RDB优点
 

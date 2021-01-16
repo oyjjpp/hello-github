@@ -2,11 +2,11 @@
 
 ## redis 学习路线
 
-![image](./redis.jpg)
+![image](./image/redis.jpg)
 
 ## redis问题画像
 
-![image](./redis_question.jpeg)
+![image](./image/redis_question.jpeg)
 
 ## redis为什么那么快？
 
@@ -117,7 +117,7 @@ redis的多线程主要是针对IO写度进行了多线程，来提供redisIO的
 
 ## reids基本IO模型
 
-![image](./redis_io.jpg)
+![image](./image/redis_io.jpg)
 
 ## 备份
 
@@ -134,5 +134,17 @@ redis的多线程主要是针对IO写度进行了多线程，来提供redisIO的
 3、支持主从模式和哨兵机制的高可用  
 4、内存过载时的淘汰算法  
 5、支持集群和分片的横向扩展  
+
+## redis一般会创建哪些子进程？
+
+1、创建RDB的后台子进程(bgsave)，同时由它负责在主从同步时传输RDB给从库  
+2、主从通过无盘复制方式传输RDB的子进程  
+3、bgrewriteaof子进程（重写AOF）。
+
+## 集合统计模式
+
+聚合统计、排序统计、二值状态统计、基数统计
+
+## redis参考
 
 [redis中文社区文档](http://www.redis.cn/documentation.html)

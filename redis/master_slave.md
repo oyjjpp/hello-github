@@ -5,7 +5,7 @@ redis的高可用，一个是使用AOF或RDB保证数据减少丢失，另一个
 ## 主从库读写分离
 
 保证所有数据实例的一致性，只有主库可以进行写入，主从库都可以进行读操作。
-![image](./master_slave_read_write.jpg)
+![image](./image/master_slave_read_write.jpg)
 
 ## 主从同步流程
 
@@ -13,7 +13,7 @@ redis的高可用，一个是使用AOF或RDB保证数据减少丢失，另一个
 第二阶段，主库将所有数据同步给从库,从库收到数据后，在本地完成数据加载,这个过程依赖于内存快照生成的RDB文件。  
 第三阶段，主库会把第二阶段执行过程中新收到的写命令，再发送给从库。具体的操作是，当主库完成 RDB 文件发送后，就会把此时 replication buffer 中的修改操作发给从库，从库再重新执行这些操作。这样一来，主从库就实现同步了。
 
-![image](./master-slave.jpg)
+![image](./image/master-slave.jpg)
 
 ## 主从同步的模式
 
