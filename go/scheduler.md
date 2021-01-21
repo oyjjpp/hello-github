@@ -209,17 +209,26 @@ G0是每次启动一个M都会第一个创建的gourtine，G0仅用于负责调�
 
 #### 调度器初始化
 
-运行时通过 runtime.schedinit 初始化调度器：  
+运行时通过runtime.schedinit初始化调度器：  
 
 1、初始化M的个数，为10000；  
 2、初始化P的个数，从GOMAXPROCS环境变量中获取；  
+3、调度器会完成相应数量处理器的启动，然后等待用户创建运行新的Goroutine并为Goroutine调度处理器资源
+
+#### 创建协程
+
+```golang
+go func(){
+    //
+}()
+```
 
 ## 调度场景
 
 ## 参考
 
-[Golang 调度器 GMP 原理与调度全分析](https://learnku.com/articles/41728)
-
+[Golang 调度器 GMP 原理与调度全分析](https://learnku.com/articles/41728)  
+[调度器](https://draveness.me/golang/docs/part3-runtime/ch06-concurrency/golang-goroutine/)
 原文作者：Aceld  
 转自链接：<https://learnku.com/articles/41728>  
 版权声明：著作权归作者所有。商业转载请联系作者获得授权，非商业转载请保留以上作者信息和原文链接。  
