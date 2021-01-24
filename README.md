@@ -40,6 +40,9 @@
 
 ### golang
 
+- 常用技术
+  - 1 [golang常见问题](./go/README.md)
+
 - 学习资料
   - 1 [go语言学习视频](http://www.ucai.cn/course/show/69)
   - 2 [go基础教程](https://github.com/Unknwon/the-way-to-go_ZH_CN/blob/master/eBook/directory.md)
@@ -47,6 +50,9 @@
 
 - 市场常见开发框架及CMS
   - 1 [beego](https://beego.me/)
+  - 2 [gin](https://github.com/gin-gonic/gin)
+  - 3 [iris](https://github.com/kataras/iris)
+  - 4 [echo](https://github.com/labstack/echo)
 
 ### JavaScript
 
