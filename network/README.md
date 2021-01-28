@@ -80,7 +80,48 @@ cookie和session都是用来跟踪浏览器用户身份的会话方式。
 链路层：DOCSIS  
 物理层：网卡
 
-## 三次握手
+## TCP三次握手
+
+TCP是一个面向连接的协议，无论哪一方向另一方发送数据之前，都必须现在双方之间建立一条连接；
+
+![image](./image/open_link.png)
+
+三次握手的过程：  
+第一次握手：建立连接时，客户端发送syn包（syn=x）到服务器，并进入SYN_SENT状态，等待服务器确认；  
+第二次握手：服务器收到syn包，必须确认客户的SYN（ack=x+1）,同时自己也发送一个SYN包（sync=y）,即SYN+ACK，此时服务器进入SYN_RECV状态;  
+第三次握手：客户端收到服务器的SYN+ACK包，向服务器发送确认包ACK，此包发送完毕，客户端和服务端进入ESTABLISHED状态，完成三次握手。
+
+## TCP四次挥手
+
+TCP终止连接过程
+
+![image](./image/close_link.png)
+
+1、客户端进程发出连接释放报文FIN，并且停止发送数据，此时客户端进入FIN-WAIT-1（终止状态1）状态；  
+2、服务器收到连接释放报文，发出确认报文ACK，此时服务端就进入了CLOSE-WAIT（关闭等待）状态；TCP服务器通知高层的应用进程，客户端向服务器的方向就释放了，这时候处于半关闭状态，即客户端已经没有数据要发送了，但是服务器若发送数据，客户端依然要接受；这个状态还要持续一段时间，也就是整个CLOSE-WAIT状态持续的时间。  
+3、客户端收到服务器的确认请求后，此时，客户端就进入FIN-WAIT-2（终止等待2）状态，等待服务器发送连接释放报文（在这之前还需要接受服务器发送的最后的数据）。  
+4、服务器将最后的数据发送完毕后，就像客户端发送连接释放报文FIN，由于在半关闭状态，服务器很可能又发送了一些数据，服务器就进入了LAST-ACK（最后确认）状态，等待客户端的确认。  
+5、客户端收到服务器的连接释放报文后，必须发出确认ACK，此时客户端就进入了TIME-WAIT（时间等待）状态；注意此时TCP连接还没有释放，必须经过2*MSL（最长报文段寿命）的时间后，当客户端撤销响应的TCB后，才进入CLOSED状态。  
+6、服务器只要收到了客户端发出的确认，立即进入CLOSED状态。同样，撤销TCB后，就结束了这次的TCP连接。可以看到，服务器结束TCP连接的时间要比客户端早一些。
+
+## TCP状态机
+
+![image](./image/tcp_status.png)
+
+1、CLOSED:状态初始状态。  
+2、LISTEN:服务端的监听指定socket的状态。  
+3、SYN_RCVD:服务端收到SYN后，状态为SYN，发送SYN ACK。  
+4、SYN_SENT:应用程序发送SYN后，状态进入SYN_SENT。  
+5、ESTABLISHED:SYN_RCVD收到ACK后，状态为ESTABLISHED；SYN_SENT收到SYN ACK，在发送ACK之后，状态变为ESTABLISHED。  
+6、CLOSE_WAIT：服务端u你收到FIN受，发送ACK，状态为CLOSE_WAIT;如果此时服务器端还有数据需要发送，那么就发送，直到数据发送完毕；此时，服务器端发送FIN，状态变为 LAST_ACK。  
+7、FIN_WAIT_1：应用程序端发送FIN，准备断开TCP连接；状态从ESTABLISHED -> FIN_WAIT_1。  
+8、FIN_WAIT_2：应用程序端只收到服务器端得ACK信号，并没有收到FIN信号；说明服务器端还有数据传输，那么此时为半连接。  
+9、TIME_WAIT：
+    FIN_WAIT_1进入：此时应用程序端口收到 FIN+ACK（而不是像 FIN_WAIT_2 那样只收到 ACK，说明数据已经发送完毕）并向服务器端口发送 ACK；
+
+    FIN_WAIT_2进入：此时应用程序端口收到了 FIN，然后向服务器端发送 ACK；TIME_WAIT 是为了实现 TCP 全双工连接的可靠性关闭，用来重发可能丢失的 ACK 报文；需要持续 2 个 MSL (最大报文生存时间)：假设应用程序端口在进入 TIME_WAIT后，2 个 MSL 时间内并没有收到FIN,说明应用程序最后发出的 ACK 已经收到了；否则，会在 2 个 MSL 内在此收到ACK报文；
+
+## TCB
 
 [TCP 三次握手和四次挥手图解（有限状态机）](https://www.cnblogs.com/huansky/p/13951567.html)
 
