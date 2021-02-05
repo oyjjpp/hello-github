@@ -46,6 +46,17 @@ HTTPS首先在HTTP/1.1中使用，并在RFC 2616中定义。
 
 ![image](./image/network.png "TLS/SSL协议网络层次")
 
+### 为什么发明HTTPS
+
+为解决数据在网络传输上的安全问题
+
+### HTTP与HTTPS的区别
+
+1、HTTPS协议需要到ca申请证书，一般免费证书较少，因而需要一定费用。  
+2、HTTP是超文本传输协议，信息是明文传输，HTTPS则是具有安全性的ssl加密传输协议。  
+3、HTTP和HTTPS使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443。  
+4、HTTP的连接很简单，是无状态的；HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，比HTTP协议安全。
+
 ### TSL/SSL协议的目标
 
 1、数据是机密的：通信两端传输的数据应该是安全的，不可伪造和篡改的；  
@@ -53,8 +64,18 @@ HTTPS首先在HTTP/1.1中使用，并在RFC 2616中定义。
 3、扩展性：针对密码算法可以动态引入；  
 4、效率：解决方案必须是高校的；  
 
+### TSL/SSL协议核心三大步骤
+
+认证、密钥协商、数据加密
+
+### HTTPS交互过程
+
+![image](./image/https.png)
+
 ## 参考
 
 [HTTP1.0、HTTP1.1和HTTP2.0的区别](https://www.jianshu.com/p/be29d679cbff)  
 [HTTP](https://www.computerhope.com/jargon/h/http.htm)  
-[超文本传输​​协议版本2（HTTP / 2）](https://tools.ietf.org/html/rfc7540)
+[超文本传输​​协议版本2（HTTP / 2）](https://tools.ietf.org/html/rfc7540)  
+[RFC2616](https://tools.ietf.org/html/rfc2616)  
+[聊聊HTTPS和SSL/TLS协议](http://www.httpclient.cn/archives/60.html)  
