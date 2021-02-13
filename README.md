@@ -6,6 +6,8 @@
 
 - 日常使用工具
   - 1 [chrome代理配置](https://www.switchyomega.com/)
+  - 2 [在线url参数转json,url参数转字典形式](http://tools.bugscaner.com/urltodict/)
+  - 3 [JSON-to-Go](https://mholt.github.io/json-to-go/)
 
 - 常用网站
   - 1 [web技术统计](https://w3techs.com)
