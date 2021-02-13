@@ -8,6 +8,9 @@
   - 1 [chrome代理配置](https://www.switchyomega.com/)
   - 2 [在线url参数转json,url参数转字典形式](http://tools.bugscaner.com/urltodict/)
   - 3 [JSON-to-Go](https://mholt.github.io/json-to-go/)
+  - 4 [时间在线工具](https://tool.lu/timestamp)
+  - 5 [URL编码](http://www.jsons.cn/urlencode/)
+  - 6 [hmac](https://1024tools.com/hmac)
 
 - 常用网站
   - 1 [web技术统计](https://w3techs.com)
