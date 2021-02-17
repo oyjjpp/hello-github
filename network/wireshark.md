@@ -84,6 +84,10 @@ http.request.method == POST && http contains "User-Agent: "
 http contains "HTTP/1.1 200 OK" && http contains "Content-Type: "  
 http contains "HTTP/1.0 200 OK" && http contains "Content-Type: "
 
+#### 域名过滤
+
+http.host == "www.baidu.com"
+
 ### 运算符
 
 less than：lt  
